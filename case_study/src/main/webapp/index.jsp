@@ -5,9 +5,7 @@
     <title>trung da ơ day</title>
 </head>
 <body>
-<h1><%= "commit!" %>
-=======
-
+<h1><%= "commit!" %>dụng
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
