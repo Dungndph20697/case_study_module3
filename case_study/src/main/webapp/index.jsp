@@ -5,7 +5,7 @@
     <title>trung da ơ day</title>
 </head>
 <body>
-<h1><%= "dụng hello trung!" %>
+<h1><%= "trungchuche!" %>
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
