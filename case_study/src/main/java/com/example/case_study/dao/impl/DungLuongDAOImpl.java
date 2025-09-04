@@ -42,8 +42,10 @@ public class DungLuongDAOImpl implements IDungLuong<DungLuong> {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 dungLuong = new DungLuong();
+                int idResult = rs.getInt("id");
                 String tenDungLuong = rs.getString("ten_dung_luong");
                 dungLuong.setTenDungLuong(tenDungLuong);
+                dungLuong.setId(idResult);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
