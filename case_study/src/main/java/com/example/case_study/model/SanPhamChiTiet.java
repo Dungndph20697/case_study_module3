@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class SanPhamChiTiet {
     private int id;
     private String moTa;
-    private double gia;
+    private BigDecimal gia;
     private int soLuong;
     private String anh;
     private int trangThai;
