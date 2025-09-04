@@ -6,7 +6,6 @@ import com.example.case_study.utils.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class DungLuongDAOImpl implements IDungLuong<DungLuong> {

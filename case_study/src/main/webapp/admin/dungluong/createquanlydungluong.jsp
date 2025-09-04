@@ -64,65 +64,31 @@
                             <i class="fas fa-hdd me-2 text-primary"></i>
                             Quản Lý Dung Lượng
                         </h2>
-                        <button class="btn btn-primary btn-custom">
-                            <i class="fas fa-plus me-2"></i>Thêm Dung Lượng
-                        </button>
+
                     </div>
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="row mb-4">
-                                <div class="col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-search"></i>
-                                        <input type="text" class="form-control" placeholder="Tìm kiếm dung lượng...">
+                            <form action="/admin/dung-luong?action=add" method="post">
+                                <div class="modal-body">
+
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold">Tên *</label>
+                                        <input type="text" id="name" name="tenDungLuong" class="form-control"
+                                               placeholder="Nhập tên">
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <select class="form-select">
-                                        <option>Tất cả đơn vị</option>
-                                        <option>GB</option>
-                                        <option>TB</option>
-                                        <option>MB</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <select class="form-select">
-                                        <option>Tất cả trạng thái</option>
-                                        <option>Hoạt động</option>
-                                        <option>Ngừng hoạt động</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Tên Dung Lượng</th>
-                                        <th>Thao Tác</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach var="dungLuongs" items="${dungLuongs}" varStatus="status">
-                                        <tr>
-                                            <td><span class="badge bg-primary">${dungLuongs.id}</span></td>
-                                            <td class="fw-bold">${dungLuongs.tenDungLuong}</td>
-                                            <td class="action-buttons">
-                                                <button class="btn btn-sm btn-outline-primary" title="Sửa">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="btn btn-sm btn-outline-danger" title="Xóa">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a type="button" class="btn btn-secondary" href="/admin/dung-luong">
+                                        <i class="fas fa-times me-2"></i>Hủy
+                                    </a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-2"></i>Lưu
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -131,6 +97,39 @@
             </div>
         </div>
     </div>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="fas fa-plus me-2"></i>Thêm Mới</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <form action="/admin/dung-luong?action=add" method="post">
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Tên *</label>
+                            <input type="text" id="name" name="tenDungLuong" class="form-control"
+                                   placeholder="Nhập tên">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fas fa-times me-2"></i>Hủy
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Lưu
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
