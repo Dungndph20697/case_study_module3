@@ -55,8 +55,6 @@
             </nav>
 
             <div class="p-4">
-
-
                 <!-- Storage Section -->
                 <div class="mb-5 section-divider">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -66,7 +64,6 @@
                         </h2>
 
                     </div>
-
                     <div class="card">
                         <div class="card-body">
                             <form action="/admin/dung-luong?action=edit" method="post">
@@ -80,10 +77,8 @@
                                         <input type="text" id="name" name="tenDungLuong" class="form-control"
                                                placeholder="Nhập tên" value="${dungLuong.tenDungLuong}">
                                     </div>
-
-
                                 </div>
-                                <div class="modal-footer">
+                                <div class="d-flex justify-content-end gap-2">
                                     <a type="button" class="btn btn-secondary" href="/admin/dung-luong">
                                         <i class="fas fa-times me-2"></i>Hủy
                                     </a>
@@ -95,44 +90,9 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
-
-    <!-- Add Modal -->
-    <div class="modal fade" id="addModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title"><i class="fas fa-plus me-2"></i>Thêm Mới</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <form action="/admin/dung-luong?action=add" method="post">
-                    <div class="modal-body">
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Tên *</label>
-                            <input type="text" id="name" name="tenDungLuong" class="form-control"
-                                   placeholder="Nhập tên">
-                        </div>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="fas fa-times me-2"></i>Hủy
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save me-2"></i>Lưu
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
