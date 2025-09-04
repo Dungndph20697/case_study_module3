@@ -5,6 +5,7 @@ import com.example.case_study.model.DungLuong;
 import com.example.case_study.model.SanPhamChiTiet;
 import com.example.case_study.utils.DBConnection;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -28,7 +29,7 @@ public class SanPhamChiTietDAOImpl implements ISanPhamChiTiet<SanPhamChiTiet> {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String moTa = rs.getString("mo_ta");
-                double gia = rs.getDouble("gia");
+                BigDecimal gia = rs.getBigDecimal("gia");
                 int soLuong = rs.getInt("so_luong");
                 int trangThai = rs.getInt("trang_thai");
                 String anh = rs.getString("anh");
