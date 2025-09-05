@@ -152,7 +152,7 @@
                                             <td class="fw-bold">${spct.moTa}</td>
                                             <td>
                                                 <div class="d-flex align-items-center">
-                                                    
+
                                                     <span>Đen</span>
                                                 </div>
                                             </td>
