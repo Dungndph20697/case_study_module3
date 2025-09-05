@@ -7,6 +7,7 @@ import com.example.case_study.utils.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 
+import java.util.Collections;
 import java.util.List;
 
 public class DungLuongDAOImpl implements IDungLuong<DungLuong> {
@@ -15,6 +16,7 @@ public class DungLuongDAOImpl implements IDungLuong<DungLuong> {
     private static final String SELECT_DUNGLUONG_BY_ID = "SELECT * FROM dung_luong WHERE id = ?;";
     private static final String INSERT_DUNGLUONG = "INSERT INTO dung_luong(ten_dung_luong) VALUES (?);";
     private static final String UPDATE_DUNGLUONG = "UPDATE dung_luong SET ten_dung_luong = ? WHERE id = ?;";
+    private static final String SEARCH_DUNGLUONG = "SELECT * FROM dung_luong WHERE ten_dung_luong LIKE ?";
 
 
     @Override
@@ -85,6 +87,25 @@ public class DungLuongDAOImpl implements IDungLuong<DungLuong> {
     @Override
     public boolean delete(int id) {
         return false;
+    }
+
+    @Override
+    public List<DungLuong> searchByName(String keyword) {
+        List<DungLuong> list = new ArrayList<>();
+        try(Connection conn = new DBConnection().getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(SEARCH_DUNGLUONG)){
+            pstmt.setString(1, "%" + keyword + "%");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String tenDungLuong = rs.getString("ten_dung_luong");
+                list.add(new DungLuong(id, tenDungLuong));
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return list;
+
     }
 
 
