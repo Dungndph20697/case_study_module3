@@ -20,13 +20,63 @@ public class ControllerMauSac extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        // Lấy danh sách màu từ service
-        List<MauSac> list = mauSacService.findAll();
+        // 3 dong UTF sửa lỗi tiếng việt
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+        String action = req.getParameter("action");
+        if (action == null) action = "list";
+        switch (action) {
+            case "create":
+                req.getRequestDispatcher("/admin/mausac/addmausac.jsp").forward(req, resp);
+                break;
+            case "edit":
+                int id = Integer.parseInt(req.getParameter("id"));
+                MauSac mau = mauSacService.findById(id);
+                req.setAttribute("mauSac", mau);
+                req.getRequestDispatcher("/admin/mausac/editmausac.jsp").forward(req, resp);
+                break;
+            case "delete":
+                int deleteId = Integer.parseInt(req.getParameter("id"));
+                mauSacService.deleteById(deleteId);
+                resp.sendRedirect(req.getContextPath() + "/admin/mau-sac");
+                break;
+            case "search":
+                String keyword = req.getParameter("keyword");
+                if (keyword == null || keyword.isEmpty()) {
+                    List<MauSac> list = mauSacService.findAll();
+                    req.setAttribute("listMauSac", list);
+                } else {
+                    List<MauSac> result = mauSacService.searchByName(keyword);
+                    req.setAttribute("listMauSac", result);
+                }
+                req.getRequestDispatcher("/admin/quanlymausac.jsp").forward(req, resp);
+                break;
+            default:
+                List<MauSac> list = mauSacService.findAll();
+                req.setAttribute("listMauSac", list);
+                req.getRequestDispatcher("/admin/quanlymausac.jsp").forward(req, resp);
+        }
+    }
 
-        // Gắn vào request để JSP sử dụng
-        req.setAttribute("listMauSac", list);
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+        String id = req.getParameter("id");
+        String tenMauSac = req.getParameter("tenMauSac");
 
-        // Chuyển sang trang JSP
-        req.getRequestDispatcher("/admin/quanlymausac.jsp").forward(req, resp);
+        if (id == null || id.isEmpty()) {
+            // thêm mới
+            MauSac mauSac = new MauSac();
+            mauSac.setMauSac(tenMauSac);
+            mauSacService.save(mauSac);
+        } else {
+            // cập nhập
+            MauSac mauSac = new MauSac(Integer.parseInt(id), tenMauSac);
+            mauSacService.update(mauSac);
+        }
+        resp.sendRedirect(req.getContextPath() + "/admin/mau-sac");
     }
 }
