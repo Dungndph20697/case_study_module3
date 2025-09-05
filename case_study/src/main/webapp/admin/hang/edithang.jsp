@@ -74,7 +74,7 @@
 
                                 <div class="mb-3">
                                     <label for="tenHang">Tên hãng</label>
-                                    <input type="text" name="tenHang" class="form-control" value="${tenHang.tenHang}"
+                                    <input type="text" name="tenHang" class="form-control" value="${hang.tenHang}"
                                            required/>
                                 </div>
 

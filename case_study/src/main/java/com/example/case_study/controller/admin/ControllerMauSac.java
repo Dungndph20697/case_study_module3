@@ -74,7 +74,8 @@ public class ControllerMauSac extends HttpServlet {
             mauSacService.save(mauSac);
         } else {
             // cập nhập
-            MauSac mauSac = new MauSac(Integer.parseInt(id), tenMauSac);
+            MauSac mauSac = mauSacService.findById(Integer.parseInt(id));
+            mauSac.setMauSac(tenMauSac);
             mauSacService.update(mauSac);
         }
         resp.sendRedirect(req.getContextPath() + "/admin/mau-sac");

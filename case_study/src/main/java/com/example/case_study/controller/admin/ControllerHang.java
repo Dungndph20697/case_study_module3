@@ -66,7 +66,9 @@ public class ControllerHang extends HttpServlet {
             hangService.save(hang);
         }else {
             // cập nhập
-            Hang hang = new Hang(Integer.parseInt(id), tenHang);
+            Hang hang = hangService.findById(Integer.parseInt(id));
+//            Hang hang = new Hang(Integer.parseInt(id), tenHang);
+            hang.setTenHang(tenHang);
             hangService.update(hang);
         }
         resp.sendRedirect(req.getContextPath() + "/admin/hang");
