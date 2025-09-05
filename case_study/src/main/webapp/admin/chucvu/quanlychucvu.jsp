@@ -35,19 +35,15 @@
                         </span>
                     <div class="d-flex align-items-center">
                         <div class="dropdown">
-                            <button class="btn btn-outline-primary dropdown-toggle btn-custom" type="button"
-                                    data-bs-toggle="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle btn-custom" type="button" data-bs-toggle="dropdown">
                                 <i class="fas fa-user-circle me-2"></i>
                                 Administrator
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>Hồ Sơ</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Cài Đặt</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#"><i
-                                        class="fas fa-sign-out-alt me-2"></i>Đăng Xuất</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i>Đăng Xuất</a></li>
                             </ul>
                         </div>
                     </div>
@@ -55,38 +51,28 @@
             </nav>
 
             <div class="p-4">
-
-
-                <!-- Storage Section -->
+                <!-- Positions Section -->
                 <div class="mb-5 section-divider">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h2 class="fw-bold">
-                            <i class="fas fa-hdd me-2 text-primary"></i>
-                            Quản Lý Dung Lượng
+                            <i class="fas fa-user-tie me-2 text-primary"></i>
+                            Quản Lý Chức Vụ
                         </h2>
-                        <button class="btn btn-primary btn-custom">
-                            <i class="fas fa-plus me-2"></i>Thêm Dung Lượng
-                        </button>
+                        <a class="btn btn-primary btn-custom" href="/admin/chuc-vu?action=create">
+                            <i class="fas fa-plus me-2"></i>Thêm Chức Vụ
+                        </a>
                     </div>
 
                     <div class="card">
                         <div class="card-body">
                             <div class="row mb-4">
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="search-box">
                                         <i class="fas fa-search"></i>
-                                        <input type="text" class="form-control" placeholder="Tìm kiếm dung lượng...">
+                                        <input type="text" class="form-control" placeholder="Tìm kiếm chức vụ...">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <select class="form-select">
-                                        <option>Tất cả đơn vị</option>
-                                        <option>GB</option>
-                                        <option>TB</option>
-                                        <option>MB</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <select class="form-select">
                                         <option>Tất cả trạng thái</option>
                                         <option>Hoạt động</option>
@@ -100,26 +86,29 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Tên Dung Lượng</th>
+                                        <th>Tên Chức Vụ</th>
                                         <th>Thao Tác</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="dungLuongs" items="${dungLuongs}" varStatus="status">
+                                    <c:forEach var="chucVu" items="${chucVus}" varStatus="status">
                                         <tr>
-                                            <td><span class="badge bg-primary">${dungLuongs.id}</span></td>
-                                            <td class="fw-bold">${dungLuongs.tenDungLuong}</td>
+                                            <td><span class="badge bg-primary">${chucVu.id}</span></td>
+                                            <td class="fw-bold">${chucVu.tenChuVu}</td>
                                             <td class="action-buttons">
-                                                <button class="btn btn-sm btn-outline-primary" title="Sửa">
+                                                <a href="/admin/chuc-vu?action=edit&id=${chucVu.id}"
+                                                   class="btn btn-sm btn-outline-primary" title="Sửa">
                                                     <i class="fas fa-edit"></i>
+                                                </a>
                                                 </button>
-                                                <button class="btn btn-sm btn-outline-danger" title="Xóa">
+                                                <a href="/admin/chuc-vu?action=delete&id=${chucVu.id}"
+                                                   class="btn btn-sm btn-outline-danger" title="Xóa"
+                                                   onclick="return confirm('Bạn có chắc muốn xóa chức vụ này không?')">
                                                     <i class="fas fa-trash"></i>
-                                                </button>
+                                                </a>
                                             </td>
                                         </tr>
                                     </c:forEach>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -127,42 +116,10 @@
                     </div>
                 </div>
 
-
-            </div>
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>(function () {
-    function c() {
-        var b = a.contentDocument || a.contentWindow.document;
-        if (b) {
-            var d = b.createElement('script');
-            d.innerHTML = "window.__CF$cv$params={r:'979a9e4aa2611fbc',t:'MTc1Njk1ODgyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-            b.getElementsByTagName('head')[0].appendChild(d)
-        }
-    }
-
-    if (document.body) {
-        var a = document.createElement('iframe');
-        a.height = 1;
-        a.width = 1;
-        a.style.position = 'absolute';
-        a.style.top = 0;
-        a.style.left = 0;
-        a.style.border = 'none';
-        a.style.visibility = 'hidden';
-        document.body.appendChild(a);
-        if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
-            var e = document.onreadystatechange || function () {
-            };
-            document.onreadystatechange = function (b) {
-                e(b);
-                'loading' !== document.readyState && (document.onreadystatechange = e, c())
-            }
-        }
-    }
-})();</script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979a9e4aa2611fbc',t:'MTc1Njk1ODgyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

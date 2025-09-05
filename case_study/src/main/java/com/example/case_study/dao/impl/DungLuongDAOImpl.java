@@ -44,7 +44,9 @@ public class DungLuongDAOImpl implements IDungLuong<DungLuong> {
             if (rs.next()) {
                 dungLuong = new DungLuong();
                 String tenDungLuong = rs.getString("ten_dung_luong");
+                int idResult = rs.getInt("id");
                 dungLuong.setTenDungLuong(tenDungLuong);
+                dungLuong.setId(idResult);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -67,10 +69,10 @@ public class DungLuongDAOImpl implements IDungLuong<DungLuong> {
     }
 
     @Override
-    public boolean update(int id,DungLuong dungLuong) {
+    public boolean update(int id, DungLuong dungLuong) {
         int rowAffected = 0;
-        try(Connection conn = new DBConnection().getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(UPDATE_DUNGLUONG);) {
+        try (Connection conn = new DBConnection().getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(UPDATE_DUNGLUONG);) {
             pstmt.setString(1, dungLuong.getTenDungLuong());
             pstmt.setInt(2, id);
             rowAffected = pstmt.executeUpdate();

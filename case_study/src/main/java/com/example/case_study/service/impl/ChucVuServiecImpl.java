@@ -36,8 +36,6 @@ public class ChucVuServiecImpl implements IChucVuService<ChucVu> {
         ChucVu c = findById(chucVu.getId());
         if(c != null){
             c.setTenChuVu(chucVu.getTenChuVu());
-            c.setTenChuVu(chucVu.getMucLuong());
-            c.setTrangThai(chucVu.getTrangThai());
             return chucVuDAO.update(c);
         }
         return false;
