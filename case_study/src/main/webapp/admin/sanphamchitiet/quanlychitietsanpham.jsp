@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -162,7 +163,9 @@
                             >${spct.dungLuong.tenDungLuong}</span
                             >
                                             </td>
-                                            <td class="text-success fw-bold">${spct.gia}₫</td>
+                                            <td class="text-success fw-bold"><span class="current-price">
+    <fmt:formatNumber value="${spct.gia}" type="number" groupingUsed="true" maxFractionDigits="0"/> ₫
+</span></td>
                                             <td>
                             <span class="badge bg-success badge-custom"
                             >${spct.soLuong}</span

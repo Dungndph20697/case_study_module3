@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -33,10 +34,18 @@
             <c:forEach var="spct" items="${sanPhamChiTiets}" varStatus="status">
 
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="${spct.anh}"
-                             alt="iPhone 15 Pro" onerror="this.src=''; this.style.display='none';">
-                        <span class="badge">Hot</span>
+                        <%--                    <div class="product-image">--%>
+                        <%--                        <img src="${spct.anh}"--%>
+                        <%--                             alt="iPhone 15 Pro" onerror="this.src=''; this.style.display='none';">--%>
+                        <%--                        <span class="badge">Hot</span>--%>
+                        <%--                    </div>--%>
+                    <div class="product-image mb-3">
+                        <div class="ratio ratio-1x1 border rounded shadow-sm overflow-hidden bg-light w-75 mx-auto" style="max-width: 180px;">
+                            <img src="${spct.anh}"
+                                 alt="iPhone 15 Pro"
+                                 class="img-fluid object-fit-cover w-100 h-100"
+                                 onerror="this.src=''; this.style.display='none';">
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">iPhone 15 Pro</h3>
@@ -52,7 +61,9 @@
                             <span class="rating-text">(4.9) 128 đánh giá</span>
                         </div>
                         <div class="price">
-                            <span class="current-price">${spct.gia}₫</span>
+                            <span class="current-price"><span class="current-price">
+    <fmt:formatNumber value="${spct.gia}" type="number" groupingUsed="true" maxFractionDigits="0"/> ₫
+</span></span>
                                 <%--                            <span class="old-price">32.990.000₫</span>--%>
                         </div>
                         <div class="product-actions">
