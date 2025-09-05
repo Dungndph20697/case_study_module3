@@ -16,10 +16,10 @@
             </div>
 
             <ul class="nav-links">
-                <li><a href="#home" title="Trang chủ"><i class="bi bi-house"></i></a></li>
-                <li><a href="#products" title="Sản phẩm"><i class="bi bi-grid"></i></a></li>
-                <li><a href="#about" title="Giới thiệu"><i class="bi bi-info-circle"></i></a></li>
-                <li><a href="#contact" title="Liên hệ"><i class="bi bi-telephone"></i></a></li>
+                <li><a href="/trang-chu" title="Trang chủ"><i class="bi bi-house"></i></a></li>
+                <li><a href="/trang-chu" title="Sản phẩm"><i class="bi bi-grid"></i></a></li>
+                <li><a href="/trang-chu" title="Giới thiệu"><i class="bi bi-info-circle"></i></a></li>
+                <li><a href="/trang-chu" title="Liên hệ"><i class="bi bi-telephone"></i></a></li>
             </ul>
 
             <div class="search-cart">

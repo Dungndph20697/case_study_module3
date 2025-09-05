@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -29,139 +31,52 @@
 
         <div class="product-grid">
             <!-- iPhone 15 Pro -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-natural-titanium-1-2.jpg" alt="iPhone 15 Pro" onerror="this.src=''; this.style.display='none';">
-                    <span class="badge">Hot</span>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">iPhone 15 Pro</h3>
-                    <p class="product-specs">128GB - Titan Tự Nhiên</p>
-                    <div class="rating">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <span class="rating-text">(4.9) 128 đánh giá</span>
-                    </div>
-                    <div class="price">
-                        <span class="current-price">28.990.000₫</span>
-                        <span class="old-price">32.990.000₫</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn btn-primary">
-                            <i class="bi bi-cart-plus"></i> Thêm Giỏ
-                        </button>
-                        <button class="btn btn-outline">
-                            <i class="bi bi-eye"></i> Xem
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <c:forEach var="spct" items="${sanPhamChiTiets}" varStatus="status">
 
-            <!-- Samsung Galaxy S24 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://cdn.tgdd.vn/Products/Images/42/307174/samsung-galaxy-s24-ultra-grey-1-2.jpg" alt="Samsung Galaxy S24 Ultra" onerror="this.src=''; this.style.display='none';">
-                    <span class="badge new">New</span>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Galaxy S24 Ultra</h3>
-                    <p class="product-specs">256GB - Phantom Black</p>
-                    <div class="rating">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                <div class="product-card">
+                        <%--                    <div class="product-image">--%>
+                        <%--                        <img src="${spct.anh}"--%>
+                        <%--                             alt="iPhone 15 Pro" onerror="this.src=''; this.style.display='none';">--%>
+                        <%--                        <span class="badge">Hot</span>--%>
+                        <%--                    </div>--%>
+                    <div class="product-image mb-3">
+                        <div class="ratio ratio-1x1 border rounded shadow-sm overflow-hidden bg-light w-75 mx-auto" style="max-width: 180px;">
+                            <img src="${spct.anh}"
+                                 alt="iPhone 15 Pro"
+                                 class="img-fluid object-fit-cover w-100 h-100"
+                                 onerror="this.src=''; this.style.display='none';">
                         </div>
-                        <span class="rating-text">(4.8) 95 đánh giá</span>
                     </div>
-                    <div class="price">
-                        <span class="current-price">26.990.000₫</span>
-                        <span class="old-price">29.990.000₫</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn btn-primary">
-                            <i class="bi bi-cart-plus"></i> Thêm Giỏ
-                        </button>
-                        <button class="btn btn-outline">
-                            <i class="bi bi-eye"></i> Xem
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Google Pixel 8 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://cdn.tgdd.vn/Products/Images/42/309831/google-pixel-8-obsidian-1-2.jpg" alt="Google Pixel 8" onerror="this.src=''; this.style.display='none';">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Google Pixel 8</h3>
-                    <p class="product-specs">128GB - Obsidian</p>
-                    <div class="rating">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                    <div class="product-info">
+                        <h3 class="product-name">iPhone 15 Pro</h3>
+                        <p class="product-specs">128GB - Titan Tự Nhiên</p>
+                        <div class="rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">(4.9) 128 đánh giá</span>
                         </div>
-                        <span class="rating-text">(4.6) 67 đánh giá</span>
-                    </div>
-                    <div class="price">
-                        <span class="current-price">16.990.000₫</span>
-                        <span class="old-price">18.990.000₫</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn btn-primary">
-                            <i class="bi bi-cart-plus"></i> Thêm Giỏ
-                        </button>
-                        <button class="btn btn-outline">
-                            <i class="bi bi-eye"></i> Xem
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Xiaomi 14 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://cdn.tgdd.vn/Products/Images/42/319897/xiaomi-14-black-1-2.jpg" alt="Xiaomi 14" onerror="this.src=''; this.style.display='none';">
-                    <span class="badge">Sale</span>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Xiaomi 14</h3>
-                    <p class="product-specs">256GB - Black</p>
-                    <div class="rating">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                        <div class="price">
+                            <span class="current-price"><span class="current-price">
+    <fmt:formatNumber value="${spct.gia}" type="number" groupingUsed="true" maxFractionDigits="0"/> ₫
+</span></span>
+                                <%--                            <span class="old-price">32.990.000₫</span>--%>
                         </div>
-                        <span class="rating-text">(4.5) 43 đánh giá</span>
-                    </div>
-                    <div class="price">
-                        <span class="current-price">14.990.000₫</span>
-                        <span class="old-price">17.990.000₫</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn btn-primary">
-                            <i class="bi bi-cart-plus"></i> Thêm Giỏ
-                        </button>
-                        <button class="btn btn-outline">
-                            <i class="bi bi-eye"></i> Xem
-                        </button>
+                        <div class="product-actions">
+                            <button class="btn btn-primary">
+                                <i class="bi bi-cart-plus"></i> Thêm Giỏ
+                            </button>
+                            <button class="btn btn-outline">
+                                <i class="bi bi-eye"></i> Xem
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </section>
@@ -173,5 +88,35 @@
 <%@ include file="footer.jsp" %>
 
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979adbb2750be2fe',t:'MTc1Njk2MTM0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function () {
+    function c() {
+        var b = a.contentDocument || a.contentWindow.document;
+        if (b) {
+            var d = b.createElement('script');
+            d.innerHTML = "window.__CF$cv$params={r:'979adbb2750be2fe',t:'MTc1Njk2MTM0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName('head')[0].appendChild(d)
+        }
+    }
+
+    if (document.body) {
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+        document.body.appendChild(a);
+        if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
+            var e = document.onreadystatechange || function () {
+            };
+            document.onreadystatechange = function (b) {
+                e(b);
+                'loading' !== document.readyState && (document.onreadystatechange = e, c())
+            }
+        }
+    }
+})();</script>
+</body>
 </html>
