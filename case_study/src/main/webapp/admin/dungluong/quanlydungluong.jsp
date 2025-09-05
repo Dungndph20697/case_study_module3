@@ -64,9 +64,9 @@
                             <i class="fas fa-hdd me-2 text-primary"></i>
                             Quản Lý Dung Lượng
                         </h2>
-                        <button class="btn btn-primary btn-custom">
+                        <a class="btn btn-primary btn-custom" href="/admin/dung-luong?action=create">
                             <i class="fas fa-plus me-2"></i>Thêm Dung Lượng
-                        </button>
+                        </a>
                     </div>
 
                     <div class="card">
@@ -110,24 +110,23 @@
                                             <td><span class="badge bg-primary">${dungLuongs.id}</span></td>
                                             <td class="fw-bold">${dungLuongs.tenDungLuong}</td>
                                             <td class="action-buttons">
-                                                <button class="btn btn-sm btn-outline-primary" title="Sửa">
+                                                <a href="/admin/dung-luong?action=edit&id=${dungLuongs.id}"
+                                                   class="btn btn-sm btn-outline-primary" title="Sửa">
                                                     <i class="fas fa-edit"></i>
-                                                </button>
+                                                </a>
+
                                                 <button class="btn btn-sm btn-outline-danger" title="Xóa">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
                                     </c:forEach>
-
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

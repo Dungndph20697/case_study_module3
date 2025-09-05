@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -116,145 +117,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><span class="badge bg-primary">#001</span></td>
-                          <td class="fw-bold">Đen Titanium</td>
-                          <td><code>#1C1C1E</code></td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div
-                                class="color-preview me-2"
-                                style="background-color: #1c1c1e"
-                              ></div>
-                              <span class="fw-bold">Đen Titanium</span>
-                            </div>
-                          </td>
-                          <td>Màu đen cao cấp cho iPhone Pro</td>
-                          <td>
-                            <span class="badge bg-success badge-custom"
-                              >Hoạt động</span
-                            >
-                          </td>
-                          <td class="action-buttons">
-                            <button
-                              class="btn btn-sm btn-outline-primary"
-                              title="Sửa"
-                            >
-                              <i class="fas fa-edit"></i>
-                            </button>
-                            <button
-                              class="btn btn-sm btn-outline-danger"
-                              title="Xóa"
-                            >
-                              <i class="fas fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><span class="badge bg-primary">#002</span></td>
-                          <td class="fw-bold">Trắng Titanium</td>
-                          <td><code>#F2F2F7</code></td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div
-                                class="color-preview me-2"
-                                style="
-                                  background-color: #f2f2f7;
-                                  border: 1px solid #ddd;
-                                "
-                              ></div>
-                              <span class="fw-bold">Trắng Titanium</span>
-                            </div>
-                          </td>
-                          <td>Màu trắng tinh khôi</td>
-                          <td>
-                            <span class="badge bg-success badge-custom"
-                              >Hoạt động</span
-                            >
-                          </td>
-                          <td class="action-buttons">
-                            <button
-                              class="btn btn-sm btn-outline-primary"
-                              title="Sửa"
-                            >
-                              <i class="fas fa-edit"></i>
-                            </button>
-                            <button
-                              class="btn btn-sm btn-outline-danger"
-                              title="Xóa"
-                            >
-                              <i class="fas fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><span class="badge bg-primary">#003</span></td>
-                          <td class="fw-bold">Xanh Dương</td>
-                          <td><code>#007AFF</code></td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div
-                                class="color-preview me-2"
-                                style="background-color: #007aff"
-                              ></div>
-                              <span class="fw-bold">Xanh Dương</span>
-                            </div>
-                          </td>
-                          <td>Màu xanh dương cổ điển</td>
-                          <td>
-                            <span class="badge bg-success badge-custom"
-                              >Hoạt động</span
-                            >
-                          </td>
-                          <td class="action-buttons">
-                            <button
-                              class="btn btn-sm btn-outline-primary"
-                              title="Sửa"
-                            >
-                              <i class="fas fa-edit"></i>
-                            </button>
-                            <button
-                              class="btn btn-sm btn-outline-danger"
-                              title="Xóa"
-                            >
-                              <i class="fas fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><span class="badge bg-primary">#004</span></td>
-                          <td class="fw-bold">Hồng</td>
-                          <td><code>#FF2D92</code></td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div
-                                class="color-preview me-2"
-                                style="background-color: #ff2d92"
-                              ></div>
-                              <span class="fw-bold">Hồng</span>
-                            </div>
-                          </td>
-                          <td>Màu hồng nổi bật</td>
-                          <td>
-                            <span class="badge bg-success badge-custom"
-                              >Hoạt động</span
-                            >
-                          </td>
-                          <td class="action-buttons">
-                            <button
-                              class="btn btn-sm btn-outline-primary"
-                              title="Sửa"
-                            >
-                              <i class="fas fa-edit"></i>
-                            </button>
-                            <button
-                              class="btn btn-sm btn-outline-danger"
-                              title="Xóa"
-                            >
-                              <i class="fas fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
+                      <c:forEach var="mau" items="${listMauSac}">
+                          <tr>
+                              <td>${mau.id}</td>
+                              <td>${mau.mauSac}</td>
+                          </tr>
+                      </c:forEach>
+
                       </tbody>
                     </table>
                   </div>
