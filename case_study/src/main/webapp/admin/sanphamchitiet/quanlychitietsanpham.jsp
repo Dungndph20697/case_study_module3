@@ -78,9 +78,9 @@
                             <i class="fas fa-list-alt me-2 text-primary"></i>
                             Quản Lý Sản Phẩm Chi Tiết
                         </h2>
-                        <button class="btn btn-primary btn-custom">
+                        <a class="btn btn-primary btn-custom" href="/admin/chi-tiet-san-pham?action=create">
                             <i class="fas fa-plus me-2"></i>Thêm Chi Tiết
-                        </button>
+                        </a>
                     </div>
 
                     <div class="card">
@@ -174,12 +174,13 @@
                             >
                                             </td>
                                             <td class="action-buttons">
-                                                <button
+                                                <a
                                                         class="btn btn-sm btn-outline-primary"
                                                         title="Sửa"
+                                                        href="/admin/chi-tiet-san-pham?action=edit"
                                                 >
                                                     <i class="fas fa-edit"></i>
-                                                </button>
+                                                </a>
                                                 <button
                                                         class="btn btn-sm btn-outline-danger"
                                                         title="Xóa"
