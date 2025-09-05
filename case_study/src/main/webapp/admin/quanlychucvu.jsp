@@ -93,51 +93,20 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><span class="badge bg-primary">#001</span></td>
-                                        <td class="fw-bold">Giám Đốc</td>
-                                        <td>Quản lý toàn bộ hoạt động công ty</td>
-                                        <td class="text-success fw-bold">50.000.000 ₫</td>
-                                        <td><span class="badge bg-success badge-custom">Hoạt động</span></td>
-                                        <td class="action-buttons">
-                                            <button class="btn btn-sm btn-outline-primary" title="Sửa">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger" title="Xóa">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="badge bg-primary">#002</span></td>
-                                        <td class="fw-bold">Trưởng Phòng IT</td>
-                                        <td>Quản lý bộ phận công nghệ thông tin</td>
-                                        <td class="text-success fw-bold">25.000.000 ₫</td>
-                                        <td><span class="badge bg-success badge-custom">Hoạt động</span></td>
-                                        <td class="action-buttons">
-                                            <button class="btn btn-sm btn-outline-primary" title="Sửa">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger" title="Xóa">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="badge bg-primary">#003</span></td>
-                                        <td class="fw-bold">Nhân Viên Bán Hàng</td>
-                                        <td>Tư vấn và bán sản phẩm cho khách hàng</td>
-                                        <td class="text-success fw-bold">12.000.000 ₫</td>
-                                        <td><span class="badge bg-success badge-custom">Hoạt động</span></td>
-                                        <td class="action-buttons">
-                                            <button class="btn btn-sm btn-outline-primary" title="Sửa">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger" title="Xóa">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    <c:forEach var="chucVu" items="${chucVus}" varStatus="status">
+                                        <tr>
+                                            <td><span class="badge bg-primary">${chucVu.id}</span></td>
+                                            <td class="fw-bold">${chucVu.tenChucVu}</td>
+                                            <td class="action-buttons">
+                                                <button class="btn btn-sm btn-outline-primary" title="Sửa">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger" title="Xóa">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
