@@ -34,4 +34,14 @@ public class MauSacServiceImpl implements MauSacService {
         return mauSacDAO.update(mauSac);
     }
 
+    @Override
+    public boolean deleteById(int id) {
+        return mauSacDAO.deleteById(id);
+    }
+
+    @Override
+    public List<MauSac> searchByName(String keyword){
+        return mauSacDAO.searchByName(keyword);
+    }
+
 }

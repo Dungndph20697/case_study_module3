@@ -34,4 +34,9 @@ public class DungLuongServiceImpl implements IDungLuongService<DungLuong> {
     public boolean update(int id, DungLuong dungLuong) {
         return dungLuongDAO.update(id, dungLuong);
     }
+
+    @Override
+    public List<DungLuong> searchByName(String keyword) {
+        return dungLuongDAO.searchByName(keyword);
+    }
 }

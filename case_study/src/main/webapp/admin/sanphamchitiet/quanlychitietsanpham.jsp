@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -78,9 +79,9 @@
                             <i class="fas fa-list-alt me-2 text-primary"></i>
                             Quản Lý Sản Phẩm Chi Tiết
                         </h2>
-                        <button class="btn btn-primary btn-custom">
+                        <a class="btn btn-primary btn-custom" href="/admin/chi-tiet-san-pham?action=create">
                             <i class="fas fa-plus me-2"></i>Thêm Chi Tiết
-                        </button>
+                        </a>
                     </div>
 
                     <div class="card">
@@ -152,7 +153,7 @@
                                             <td class="fw-bold">${spct.moTa}</td>
                                             <td>
                                                 <div class="d-flex align-items-center">
-                                                    
+
                                                     <span>Đen</span>
                                                 </div>
                                             </td>
@@ -162,7 +163,9 @@
                             >${spct.dungLuong.tenDungLuong}</span
                             >
                                             </td>
-                                            <td class="text-success fw-bold">${spct.gia}₫</td>
+                                            <td class="text-success fw-bold"><span class="current-price">
+    <fmt:formatNumber value="${spct.gia}" type="number" groupingUsed="true" maxFractionDigits="0"/> ₫
+</span></td>
                                             <td>
                             <span class="badge bg-success badge-custom"
                             >${spct.soLuong}</span
@@ -174,12 +177,13 @@
                             >
                                             </td>
                                             <td class="action-buttons">
-                                                <button
+                                                <a
                                                         class="btn btn-sm btn-outline-primary"
                                                         title="Sửa"
+                                                        href="/admin/chi-tiet-san-pham?action=edit"
                                                 >
                                                     <i class="fas fa-edit"></i>
-                                                </button>
+                                                </a>
                                                 <button
                                                         class="btn btn-sm btn-outline-danger"
                                                         title="Xóa"

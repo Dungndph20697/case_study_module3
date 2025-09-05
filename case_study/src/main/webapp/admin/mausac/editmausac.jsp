@@ -57,70 +57,29 @@
             <div class="p-4">
 
 
-                <!-- Brands Section hãng -->
+                <!-- Storage Section -->
                 <div class="mb-5 section-divider">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h2 class="fw-bold">
-                            <i class="fas fa-tags me-2 text-primary"></i>
-                            Quản Lý Hãng
+                            <i class="fas fa-hdd me-2 text-primary"></i>
+                            Quản Lý Màu Sắc
                         </h2>
-                        <%--                        thêm hãng--%>
-                        <a href="${pageContext.request.contextPath}/admin/hang?action=create"
-                           class="btn btn-primary btn-custom">
-                            <i class="fas fa-plus"></i>Thêm hãng
-                        </a>
+
                     </div>
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="row mb-4">
-                                <div class="col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-search"></i>
-                                        <%--                                        tìm kiếm hãng--%>
-                                        <form action="${pageContext.request.contextPath}/admin/hang" method="get"
-                                              class="d-flex">
-                                            <input type="hidden" name="action" value="search"/>
-                                            <input type="text" name="keyword" class="form-control me-2"
-                                                   placeholder="Tìm kiếm hãng..." value="${param.keyword}"/>
-                                            <%--                              <button type="submit" class="btn btn-primary">--%>
-                                            <%--                                  <i class="fas fa-search"></i>--%>
-                                            <%--                              </button>--%>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            <form action="${pageContext.request.contextPath}/admin/mau-sac?action=update" method="post">
+                                <input type="hidden" name="id" value="${mauSac.id}"/>
 
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Logo</th>
-                                        <%--                                        <th>Tên Hãng</th>--%>
-                                        <%--                                        <th>Quốc Gia</th>--%>
-                                        <%--                                        <th>Website</th>--%>
-                                        <%--                                        <th>Trạng Thái</th>--%>
-                                        <th>Thao Tác</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="hangTableBody">
-                                    <c:forEach var="hang" items="${listHang}">
-                                        <tr>
-                                            <td>${hang.id}</td>
-                                            <td>${hang.tenHang}</td>
-                                            <td class="action-buttons">
-                                                    <%--nút sửa sẽ nhảy sang trang editmausac--%>
-                                                <a href="${pageContext.request.contextPath}/admin/hang?action=edit&id=${hang.id}"
-                                                   class="btn btn-sm btn-outline-primary">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="tenMauSac">Tên màu</label>
+                                    <input type="text" name="tenMauSac" class="form-control" value="${mauSac.mauSac}" required/>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                <a href="${pageContext.request.contextPath}/admin/mau-sac" class="btn btn-secondary">Hủy</a>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -129,6 +88,35 @@
             </div>
         </div>
     </div>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="fas fa-plus me-2"></i>Thêm Mới</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <form action="${pageContext.request.contextPath}/admin/mau-sac" method="post">
+                    <!-- ẩn ID vì thêm mới -->
+                    <input type="hidden" name="id" value="">
+
+                    <div class="mb-3">
+                        <label for="tenMauSac" class="form-label">Tên Màu Sắc</label>
+                        <input type="text" class="form-control" id="tenMauSac" name="tenMauSac" placeholder="Nhập tên màu..." required>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save me-2"></i>Lưu
+                    </button>
+                    <a href="${pageContext.request.contextPath}/admin/mau-sac" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Quay lại
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

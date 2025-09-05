@@ -12,4 +12,8 @@ public interface IMauSac <D> {
     boolean save(MauSac mauSac);
 
     boolean update(MauSac mauSac);
+
+    boolean deleteById(int id);
+
+    List<MauSac> searchByName(String keyword);
 }

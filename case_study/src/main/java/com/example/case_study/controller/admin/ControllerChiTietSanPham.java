@@ -1,7 +1,13 @@
 package com.example.case_study.controller.admin;
 
+import com.example.case_study.model.DungLuong;
+import com.example.case_study.model.MauSac;
 import com.example.case_study.model.SanPhamChiTiet;
+import com.example.case_study.service.IDungLuongService;
 import com.example.case_study.service.ISanPhamChiTietService;
+import com.example.case_study.service.MauSacService;
+import com.example.case_study.service.impl.DungLuongServiceImpl;
+import com.example.case_study.service.impl.MauSacServiceImpl;
 import com.example.case_study.service.impl.SanPhamChiTietServiceImpl;
 
 import javax.servlet.ServletException;
@@ -15,9 +21,13 @@ import java.util.List;
 @WebServlet(name = "chiTietSanPhamServlet", value = "/admin/chi-tiet-san-pham")
 public class ControllerChiTietSanPham extends HttpServlet {
     private ISanPhamChiTietService sanPhamChiTietService;
+    private MauSacService mauSacService;
+    private IDungLuongService dungLuongService;
 
     @Override
     public void init() throws ServletException {
+        mauSacService = new MauSacServiceImpl();
+        dungLuongService = new DungLuongServiceImpl();
         sanPhamChiTietService = new SanPhamChiTietServiceImpl();
     }
 
@@ -52,11 +62,15 @@ public class ControllerChiTietSanPham extends HttpServlet {
         }
     }
 
-    private void showEditForm(HttpServletRequest req, HttpServletResponse resp) {
-
+    private void showEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/admin/sanphamchitiet/editquanlyctsp.jsp").forward(req, resp);
     }
 
-    private void showCreateForm(HttpServletRequest req, HttpServletResponse resp) {
-
+    private void showCreateForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<MauSac> mauSacs = mauSacService.findAll();
+        List<DungLuong> dungLuongs = dungLuongService.findAll();
+        req.setAttribute("mauSacs", mauSacs);
+        req.setAttribute("dungLuongs", dungLuongs);
+        req.getRequestDispatcher("/admin/sanphamchitiet/createquanlyctsp.jsp").forward(req, resp);
     }
 }
