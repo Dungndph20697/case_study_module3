@@ -60,11 +60,10 @@ public class ControllerDungLuong extends HttpServlet {
     }
 
     private void update(HttpServletRequest req, HttpServletResponse resp) {
-//        int id = Integer.parseInt(req.getParameter("idUpdate"));
-        String id = req.getParameter("idUpdate");
+        int id = Integer.parseInt(req.getParameter("id"));
         String tenDungLuong = req.getParameter("tenDungLuong");
-//        DungLuong dungLuong = new DungLuong(id, tenDungLuong);
-//        dungLuongService.update(id, dungLuong);
+        DungLuong dungLuong = new DungLuong(id, tenDungLuong);
+        dungLuongService.update(id, dungLuong);
         try {
             resp.sendRedirect("/admin/dung-luong");
         } catch (IOException e) {
