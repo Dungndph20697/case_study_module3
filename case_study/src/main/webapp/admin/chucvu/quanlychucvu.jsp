@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -57,9 +58,9 @@
                             <i class="fas fa-user-tie me-2 text-primary"></i>
                             Quản Lý Chức Vụ
                         </h2>
-                        <button class="btn btn-primary btn-custom">
+                        <a class="btn btn-primary btn-custom" href="/admin/chuc-vu?action=create">
                             <i class="fas fa-plus me-2"></i>Thêm Chức Vụ
-                        </button>
+                        </a>
                     </div>
 
                     <div class="card">
@@ -86,9 +87,6 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Tên Chức Vụ</th>
-                                        <th>Mô Tả</th>
-                                        <th>Mức Lương</th>
-                                        <th>Trạng Thái</th>
                                         <th>Thao Tác</th>
                                     </tr>
                                     </thead>
@@ -96,14 +94,18 @@
                                     <c:forEach var="chucVu" items="${chucVus}" varStatus="status">
                                         <tr>
                                             <td><span class="badge bg-primary">${chucVu.id}</span></td>
-                                            <td class="fw-bold">${chucVu.tenChucVu}</td>
+                                            <td class="fw-bold">${chucVu.tenChuVu}</td>
                                             <td class="action-buttons">
-                                                <button class="btn btn-sm btn-outline-primary" title="Sửa">
+                                                <a href="/admin/chuc-vu?action=edit&id=${chucVu.id}"
+                                                   class="btn btn-sm btn-outline-primary" title="Sửa">
                                                     <i class="fas fa-edit"></i>
+                                                </a>
                                                 </button>
-                                                <button class="btn btn-sm btn-outline-danger" title="Xóa">
+                                                <a href="/admin/chuc-vu?action=delete&id=${chucVu.id}"
+                                                   class="btn btn-sm btn-outline-danger" title="Xóa"
+                                                   onclick="return confirm('Bạn có chắc muốn xóa chức vụ này không?')">
                                                     <i class="fas fa-trash"></i>
-                                                </button>
+                                                </a>
                                             </td>
                                         </tr>
                                     </c:forEach>
