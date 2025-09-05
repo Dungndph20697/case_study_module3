@@ -13,7 +13,8 @@ public class MauSacDAOImpl implements IMauSac {
     private static final String SELECT_MAUSAC_BY_ID = "SELECT * FROM mau_sac WHERE id = ?";
     private static final String INSERT_MAUSAC = "INSERT INTO mau_sac(ten_mau_sac) VALUES(?)";
     private static final String UPDATE_MAUSAC = "UPDATE mau_sac SET ten_mau_sac = ? WHERE id = ?";
-
+    private static final String DELELE_MAUSAC = "DELETE FROM mau_sac WHERE id = ?";
+    private static final String SEARCH_MAUSAC = "SELECT * FROM mau_sac WHERE ten_mau_sac LIKE ?";
     @Override
     public List<MauSac> findAll() {
         List<MauSac> mauSacs = new ArrayList<>();
@@ -73,6 +74,34 @@ public class MauSacDAOImpl implements IMauSac {
             throw new RuntimeException(e);
         }
         return false;
+    }
+    @Override
+    public boolean deleteById(int id){
+        try (Connection conn = new DBConnection().getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(DELELE_MAUSAC)){
+            pstmt.setInt(1, id);
+            return pstmt.executeUpdate() > 0;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<MauSac> searchByName(String keyword){
+        List<MauSac> list = new ArrayList<>();
+        try (Connection conn = new DBConnection().getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(SEARCH_MAUSAC)){
+            pstmt.setString(1, "%"+keyword+"%");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String tenMauSac = rs.getString("ten_mau_sac");
+                list.add(new MauSac(id, tenMauSac));
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return list;
     }
 
 }

@@ -12,5 +12,7 @@ public interface MauSacService {
 
     boolean update(MauSac mauSac);
 
+    boolean deleteById(int id);
 
+    List<MauSac> searchByName(String keyword);
 }
