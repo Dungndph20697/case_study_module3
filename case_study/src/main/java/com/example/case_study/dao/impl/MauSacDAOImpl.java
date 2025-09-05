@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MauSacDAOImpl implements IMauSac {
-    private static final String SELECT_ALL_MAUSAC = "SELECT * FROM mau_sac";
+    private static final String SELECT_ALL_MAUSAC = "SELECT * FROM mau_sac order by id desc;";
     private static final String SELECT_MAUSAC_BY_ID = "SELECT * FROM mau_sac WHERE id = ?";
     private static final String INSERT_MAUSAC = "INSERT INTO mau_sac(ten_mau_sac) VALUES(?)";
     private static final String UPDATE_MAUSAC = "UPDATE mau_sac SET ten_mau_sac = ? WHERE id = ?";
