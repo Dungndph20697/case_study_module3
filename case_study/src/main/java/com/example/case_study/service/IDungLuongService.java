@@ -1,5 +1,7 @@
 package com.example.case_study.service;
 
+import com.example.case_study.model.DungLuong;
+
 import java.util.List;
 
 public interface IDungLuongService<D> {
@@ -12,4 +14,5 @@ public interface IDungLuongService<D> {
 
     boolean update(int id,D d);
 
+    List<DungLuong> searchByName(String keyword);
 }

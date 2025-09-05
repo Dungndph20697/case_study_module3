@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class HangDAOImpl implements IHang {
-    private static final String SECLECT_ALL_HANG = "SELECT * FROM hang order by id ";
+    private static final String SECLECT_ALL_HANG = "SELECT * FROM hang order by id desc";
     private static final String SECLECT_HANG_BY_ID = "SELECT * FROM hang WHERE id = ?";
     private static final String INSERT_HANG = "INSERT INTO hang(ten_hang) VALUES (?)";
     private static final String UPDATE_HANG = "UPDATE hang SET ten_hang = ? WHERE id = ?";
