@@ -16,7 +16,9 @@ import java.util.List;
 
 @WebServlet(name = "dungLuongServlet", value = "/admin/dung-luong")
 public class ControllerDungLuong extends HttpServlet {
+
     private ICRUService dungLuongService;
+
 
     @Override
     public void init() throws ServletException {
@@ -35,6 +37,17 @@ public class ControllerDungLuong extends HttpServlet {
                 break;
             case "edit":
                 showEditForm(req, resp);
+                break;
+            case "search":
+                String keyword  = req.getParameter("keyword");
+                if (keyword == null || keyword.isEmpty()) {
+                    List<DungLuong> list = dungLuongService.findAll();
+                    req.setAttribute("dungLuongs", list);
+                }else{
+                    List<DungLuong> result = dungLuongService.searchByName(keyword);
+                    req.setAttribute("dungLuongs", result);
+                }
+                req.getRequestDispatcher("/admin/dungluong/quanlydungluong.jsp").forward(req, resp);
                 break;
             default:
                 listDungLuongs(req, resp);
