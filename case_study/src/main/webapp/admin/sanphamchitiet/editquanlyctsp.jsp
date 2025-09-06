@@ -74,18 +74,11 @@
                                     <div class="col-md-6">
                                         <label for="productName" class="form-label">Sản Phẩm <span
                                                 class="required">*</span></label>
-                                        <select class="form-select" id="productName" required>
-                                            <option value="">Chọn sản phẩm</option>
-                                            <option value="iphone-15-pro">iPhone 15 Pro</option>
-                                            <option value="iphone-15">iPhone 15</option>
-                                            <option value="samsung-s24-ultra">Samsung Galaxy S24 Ultra</option>
-                                            <option value="samsung-s24">Samsung Galaxy S24</option>
-                                            <option value="xiaomi-14-ultra">Xiaomi 14 Ultra</option>
-                                            <option value="xiaomi-14">Xiaomi 14</option>
-                                            <option value="oppo-find-x7">OPPO Find X7</option>
-                                            <option value="vivo-x100-pro">Vivo X100 Pro</option>
-                                            <option value="oneplus-12">OnePlus 12</option>
-                                            <option value="huawei-p60-pro">Huawei P60 Pro</option>
+                                        <select class="form-select" id="productName" name="idSanPham" required>
+                                            <c:forEach var="sp" items="${sanPhams}" varStatus="status">
+                                                <option ${sp.id==spct.sanPham.id?'selected':''}
+                                                        value="${sp.id}">${sp.tenSanPham}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                     <div class="col-md-6">

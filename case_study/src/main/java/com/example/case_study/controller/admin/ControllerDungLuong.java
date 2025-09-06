@@ -3,6 +3,7 @@ package com.example.case_study.controller.admin;
 import com.example.case_study.model.DungLuong;
 import com.example.case_study.service.ICRUService;
 import com.example.case_study.service.IDungLuongService;
+import com.example.case_study.service.IDungLuongServiceSerchByName;
 import com.example.case_study.service.impl.DungLuongServiceImpl;
 
 import javax.servlet.ServletException;
@@ -18,11 +19,13 @@ import java.util.List;
 public class ControllerDungLuong extends HttpServlet {
 
     private ICRUService dungLuongService;
+    private IDungLuongServiceSerchByName serchByNameService;
 
 
     @Override
     public void init() throws ServletException {
         dungLuongService = new DungLuongServiceImpl();
+//        serchByNameService = new DungLuongServiceImpl();
     }
 
     @Override
@@ -44,7 +47,7 @@ public class ControllerDungLuong extends HttpServlet {
                     List<DungLuong> list = dungLuongService.findAll();
                     req.setAttribute("dungLuongs", list);
                 }else{
-                    List<DungLuong> result = dungLuongService.searchByName(keyword);
+                    List<DungLuong> result = serchByNameService.searchByName(keyword);
                     req.setAttribute("dungLuongs", result);
                 }
                 req.getRequestDispatcher("/admin/dungluong/quanlydungluong.jsp").forward(req, resp);
