@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -77,9 +78,10 @@
                             <i class="fas fa-box me-2 text-primary"></i>
                             Quản Lý Sản Phẩm (Tên Sản Phẩm)
                         </h2>
-                        <button class="btn btn-primary btn-custom">
-                            <i class="fas fa-plus me-2"></i>Thêm Sản Phẩm
-                        </button>
+                        <a href="${pageContext.request.contextPath}/admin/san-pham?action=create"
+                           class="btn btn-primary btn-custom">
+                            <i class="fas fa-plus"></i>Thêm sản phẩm
+                        </a>
                     </div>
 
                     <div class="card">
@@ -88,27 +90,16 @@
                                 <div class="col-md-4">
                                     <div class="search-box">
                                         <i class="fas fa-search"></i>
-                                        <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Tìm kiếm sản phẩm..."
-                                        />
+                                        <form action="${pageContext.request.contextPath}/admin/san-pham" method="get"
+                                              class="d-flex">
+                                            <input type="hidden" name="action" value="search"/>
+                                            <input type="text" name="keyword" class="form-control me-2"
+                                                   placeholder="Tìm kiếm sản phẩm..." value="${param.keyword}"/>
+                                            <%--                              <button type="submit" class="btn btn-primary">--%>
+                                            <%--                                  <i class="fas fa-search"></i>--%>
+                                            <%--                              </button>--%>
+                                        </form>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-select">
-                                        <option>Tất cả hãng</option>
-                                        <option>Apple</option>
-                                        <option>Samsung</option>
-                                        <option>Xiaomi</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-select">
-                                        <option>Tất cả trạng thái</option>
-                                        <option>Hoạt động</option>
-                                        <option>Ngừng bán</option>
-                                    </select>
                                 </div>
                             </div>
 
@@ -118,122 +109,23 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Tên Sản Phẩm</th>
-                                        <th>Hãng</th>
-                                        <th>Danh Mục</th>
-                                        <th>Mô Tả</th>
-                                        <th>Trạng Thái</th>
                                         <th>Thao Tác</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><span class="badge bg-primary">#001</span></td>
-                                        <td class="fw-bold">iPhone 15 Pro Max</td>
-                                        <td>
-                            <span class="badge bg-info badge-custom"
-                            >Apple</span
-                            >
-                                        </td>
-                                        <td>Điện thoại</td>
-                                        <td>Smartphone cao cấp với chip A17 Pro</td>
-                                        <td>
-                            <span class="badge bg-success badge-custom"
-                            >Hoạt động</span
-                            >
-                                        </td>
-                                        <td class="action-buttons">
-                                            <button
-                                                    class="btn btn-sm btn-outline-primary"
-                                                    title="Sửa"
-                                            >
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button
-                                                    class="btn btn-sm btn-outline-info"
-                                                    title="Chi tiết"
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                            <button
-                                                    class="btn btn-sm btn-outline-danger"
-                                                    title="Xóa"
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="badge bg-primary">#002</span></td>
-                                        <td class="fw-bold">Galaxy S24 Ultra</td>
-                                        <td>
-                            <span class="badge bg-info badge-custom"
-                            >Samsung</span
-                            >
-                                        </td>
-                                        <td>Điện thoại</td>
-                                        <td>Flagship Android với S Pen</td>
-                                        <td>
-                            <span class="badge bg-success badge-custom"
-                            >Hoạt động</span
-                            >
-                                        </td>
-                                        <td class="action-buttons">
-                                            <button
-                                                    class="btn btn-sm btn-outline-primary"
-                                                    title="Sửa"
-                                            >
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button
-                                                    class="btn btn-sm btn-outline-info"
-                                                    title="Chi tiết"
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                            <button
-                                                    class="btn btn-sm btn-outline-danger"
-                                                    title="Xóa"
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="badge bg-primary">#003</span></td>
-                                        <td class="fw-bold">MacBook Pro M3</td>
-                                        <td>
-                            <span class="badge bg-info badge-custom"
-                            >Apple</span
-                            >
-                                        </td>
-                                        <td>Laptop</td>
-                                        <td>Laptop chuyên nghiệp với chip M3</td>
-                                        <td>
-                            <span class="badge bg-secondary badge-custom"
-                            >Ngừng bán</span
-                            >
-                                        </td>
-                                        <td class="action-buttons">
-                                            <button
-                                                    class="btn btn-sm btn-outline-primary"
-                                                    title="Sửa"
-                                            >
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button
-                                                    class="btn btn-sm btn-outline-info"
-                                                    title="Chi tiết"
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                            <button
-                                                    class="btn btn-sm btn-outline-danger"
-                                                    title="Xóa"
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    <c:forEach var="sanPham" items="${listSanPham}">
+                                        <tr>
+                                            <td>${sanPham.id}</td>
+                                            <td>${sanPham.tenSanPham}</td>
+                                            <td class="action-buttons">
+                                                    <%--nút sửa sẽ nhảy sang trang editSanPham--%>
+                                                <a href="${pageContext.request.contextPath}/admin/san-pham?action=edit&id=${sanPham.id}"
+                                                   class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
