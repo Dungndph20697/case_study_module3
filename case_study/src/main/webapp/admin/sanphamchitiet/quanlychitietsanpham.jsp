@@ -145,16 +145,17 @@
                                                 <div
                                                         class="d-flex align-items-center justify-content-center bg-light product-image"
                                                 >
-                                                    <i
-                                                            class="fas fa-mobile-alt fa-2x text-primary"
-                                                    ></i>
+                                                    <img
+                                                            src="/images/${spct.anh}"
+                                                            alt="${spct.sanPham.tenSanPham}"
+                                                            class="img-fluid">
                                                 </div>
                                             </td>
-                                            <td class="fw-bold">${spct.moTa}</td>
+                                            <td class="fw-bold">${spct.sanPham.tenSanPham}</td>
                                             <td>
                                                 <div class="d-flex align-items-center">
 
-                                                    <span>Đen</span>
+                                                    <span>${spct.mauSac.mauSac}</span>
                                                 </div>
                                             </td>
                                             <td>
@@ -180,7 +181,7 @@
                                                 <a
                                                         class="btn btn-sm btn-outline-primary"
                                                         title="Sửa"
-                                                        href="/admin/chi-tiet-san-pham?action=edit"
+                                                        href="/admin/chi-tiet-san-pham?action=edit&id=${spct.id}"
                                                 >
                                                     <i class="fas fa-edit"></i>
                                                 </a>

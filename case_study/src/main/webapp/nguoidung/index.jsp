@@ -16,7 +16,6 @@
 <body>
 <!-- Header -->
 <%@ include file="header.jsp" %>
-
 <!-- Hero Section -->
 <%@ include file="HeroSection.jsp" %>
 
@@ -32,16 +31,11 @@
         <div class="product-grid">
             <!-- iPhone 15 Pro -->
             <c:forEach var="spct" items="${sanPhamChiTiets}" varStatus="status">
-
                 <div class="product-card">
-                        <%--                    <div class="product-image">--%>
-                        <%--                        <img src="${spct.anh}"--%>
-                        <%--                             alt="iPhone 15 Pro" onerror="this.src=''; this.style.display='none';">--%>
-                        <%--                        <span class="badge">Hot</span>--%>
-                        <%--                    </div>--%>
                     <div class="product-image mb-3">
-                        <div class="ratio ratio-1x1 border rounded shadow-sm overflow-hidden bg-light w-75 mx-auto" style="max-width: 180px;">
-                            <img src="${spct.anh}"
+                        <div class="ratio ratio-1x1 border rounded shadow-sm overflow-hidden bg-light w-75 mx-auto"
+                             style="max-width: 180px;">
+                            <img src="/images/${spct.anh}"
                                  alt="iPhone 15 Pro"
                                  class="img-fluid object-fit-cover w-100 h-100"
                                  onerror="this.src=''; this.style.display='none';">
@@ -49,7 +43,7 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">iPhone 15 Pro</h3>
-                        <p class="product-specs">128GB - Titan Tự Nhiên</p>
+                        <p class="product-specs">${spct.dungLuong.tenDungLuong} - ${spct.mauSac.mauSac}</p>
                         <div class="rating">
                             <div class="stars">
                                 <i class="fas fa-star"></i>
@@ -64,7 +58,7 @@
                             <span class="current-price"><span class="current-price">
     <fmt:formatNumber value="${spct.gia}" type="number" groupingUsed="true" maxFractionDigits="0"/> ₫
 </span></span>
-                                <%--                            <span class="old-price">32.990.000₫</span>--%>
+
                         </div>
                         <div class="product-actions">
                             <button class="btn btn-primary">

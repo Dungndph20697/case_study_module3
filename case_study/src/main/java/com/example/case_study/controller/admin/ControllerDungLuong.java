@@ -1,6 +1,7 @@
 package com.example.case_study.controller.admin;
 
 import com.example.case_study.model.DungLuong;
+import com.example.case_study.service.ICRUService;
 import com.example.case_study.service.IDungLuongService;
 import com.example.case_study.service.impl.DungLuongServiceImpl;
 
@@ -15,7 +16,8 @@ import java.util.List;
 
 @WebServlet(name = "dungLuongServlet", value = "/admin/dung-luong")
 public class ControllerDungLuong extends HttpServlet {
-    private IDungLuongService dungLuongService = new DungLuongServiceImpl();
+
+    private ICRUService dungLuongService;
 
 
     @Override

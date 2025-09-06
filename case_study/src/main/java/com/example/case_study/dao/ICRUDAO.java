@@ -1,8 +1,8 @@
-package com.example.case_study.service;
+package com.example.case_study.dao;
 
 import java.util.List;
 
-public interface ISanPhamChiTietService<SPCT> {
+public interface ICRUDAO<SPCT> {
     List<SPCT> findAll();
 
     SPCT findById(int id);
