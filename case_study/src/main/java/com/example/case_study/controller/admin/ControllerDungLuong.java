@@ -1,7 +1,7 @@
 package com.example.case_study.controller.admin;
 
 import com.example.case_study.model.DungLuong;
-import com.example.case_study.service.IDungLuongService;
+import com.example.case_study.service.ICRUService;
 import com.example.case_study.service.impl.DungLuongServiceImpl;
 
 import javax.servlet.ServletException;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @WebServlet(name = "dungLuongServlet", value = "/admin/dung-luong")
 public class ControllerDungLuong extends HttpServlet {
-    private IDungLuongService dungLuongService;
+    private ICRUService dungLuongService;
 
     @Override
     public void init() throws ServletException {

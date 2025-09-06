@@ -56,7 +56,6 @@
 
             <div class="p-4">
 
-
                 <!-- Storage Section -->
                 <div class="mb-5 section-divider">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -69,7 +68,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="/admin/chi-tiet-san-pham?action=add" method="post" >
                                 <!-- Thông tin cơ bản -->
                                 <div class="row mb-4">
                                     <div class="col-md-6">
@@ -92,16 +91,10 @@
                                     <div class="col-md-6">
                                         <label for="brand" class="form-label">Hãng <span
                                                 class="required">*</span></label>
-                                        <select class="form-select" id="brand" required>
-                                            <option value="">Chọn hãng sản xuất</option>
-                                            <option value="apple">Apple</option>
-                                            <option value="samsung">Samsung</option>
-                                            <option value="xiaomi">Xiaomi</option>
-                                            <option value="oppo">OPPO</option>
-                                            <option value="vivo">Vivo</option>
-                                            <option value="huawei">Huawei</option>
-                                            <option value="realme">Realme</option>
-                                            <option value="oneplus">OnePlus</option>
+                                        <select class="form-select" id="brand" name="idHang" required>
+                                            <c:forEach var="hang" items="${hangs}" varStatus="status">
+                                                <option value="${hang.id}">${hang.tenHang}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -110,7 +103,7 @@
                                 <div class="mb-4">
                                     <label for="description" class="form-label">Mô Tả Sản Phẩm <span
                                             class="required">*</span></label>
-                                    <textarea class="form-control" id="description" rows="4"
+                                    <textarea class="form-control" id="description" rows="4" name="moTa"
                                               placeholder="Nhập mô tả chi tiết về sản phẩm..." required></textarea>
                                 </div>
 
@@ -120,7 +113,7 @@
                                         <label for="price" class="form-label">Giá Bán (VNĐ) <span
                                                 class="required">*</span></label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="price" placeholder="0" min="0"
+                                            <input type="number" class="form-control" name="gia" id="price" placeholder="0" min="0"
                                                    required>
                                             <span class="input-group-text">₫</span>
                                         </div>
@@ -128,20 +121,12 @@
                                     <div class="col-md-6">
                                         <label for="quantity" class="form-label">Số Lượng <span
                                                 class="required">*</span></label>
-                                        <input type="number" class="form-control" id="quantity" placeholder="0" min="0"
+                                        <input type="number" name="soLuong" class="form-control" id="quantity" placeholder="0" min="0"
                                                required>
                                     </div>
                                 </div>
 
-                                <!-- Trạng thái -->
-<%--                                <div class="mb-4">--%>
-<%--                                    <label for="status" class="form-label">Trạng Thái <span--%>
-<%--                                            class="required">*</span></label>--%>
-<%--                                    <select class="form-select" id="status" required>--%>
-<%--                                        <option value="0">Còn hàng</option>--%>
-<%--                                        <option value="1">Hết hàng</option>--%>
-<%--                                    </select>--%>
-<%--                                </div>--%>
+
 
                                 <div class="section-divider"></div>
 
@@ -151,7 +136,7 @@
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <label for="capacity" class="form-label">Dung Lượng</label>
-                                        <select class="form-select" id="capacity">
+                                        <select class="form-select" id="capacity" name="idDungLuong">
                                             <c:forEach var="dungLuong" items="${dungLuongs}" varStatus="status">
                                                 <option value="${dungLuong.id}">${dungLuong.tenDungLuong}</option>
 
@@ -160,7 +145,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="color" class="form-label">Màu Sắc</label>
-                                        <select class="form-select" id="color">
+                                        <select class="form-select" id="color" name="idMauSac">
                                             <c:forEach var="ms" items="${mauSacs}" varStatus="status">
                                                 <option value="${ms.id}">${ms.mauSac}</option>
 
@@ -176,16 +161,16 @@
 
                                 <div class="mb-4">
                                     <div class="image-upload-area">
-                                        <input type="file" class="form-control" id="productImage" accept="image/*"
+                                        <input type="file" class="form-control" id="productImage"  name="anh"
                                                multiple>
                                     </div>
                                 </div>
 
                                 <!-- Nút hành động -->
                                 <div class="d-flex justify-content-end gap-3 mt-4">
-                                    <button type="button" class="btn btn-secondary">
+                                    <a type="button" class="btn btn-secondary" href="/admin/chi-tiet-san-pham">
                                         <i class="bi bi-x-circle"></i> Hủy
-                                    </button>
+                                    </a>
                                     <button type="submit" class="btn btn-primary">
                                         <i class="bi bi-check-circle"></i> Thêm Sản Phẩm
                                     </button>

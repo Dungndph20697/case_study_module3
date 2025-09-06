@@ -3,12 +3,11 @@ package com.example.case_study.service.impl;
 import com.example.case_study.dao.IDungLuong;
 import com.example.case_study.dao.impl.DungLuongDAOImpl;
 import com.example.case_study.model.DungLuong;
-import com.example.case_study.service.IDungLuongService;
+import com.example.case_study.service.ICRUService;
 
-import java.util.Collections;
 import java.util.List;
 
-public class DungLuongServiceImpl implements IDungLuongService<DungLuong> {
+public class DungLuongServiceImpl implements ICRUService<DungLuong> {
     private IDungLuong dungLuongDAO;
 
     public DungLuongServiceImpl() {
@@ -31,7 +30,7 @@ public class DungLuongServiceImpl implements IDungLuongService<DungLuong> {
     }
 
     @Override
-    public boolean update(int id, DungLuong dungLuong) {
-        return dungLuongDAO.update(id, dungLuong);
+    public boolean update(int id, DungLuong d) {
+        return dungLuongDAO.update(id, d);
     }
 }

@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 public class SanPhamChiTiet {
     private int id;
     private String moTa;
@@ -18,4 +19,7 @@ public class SanPhamChiTiet {
     private String anh;
     private int trangThai;
     private DungLuong dungLuong;
+    private MauSac mauSac;
+    private SanPham sanPham;
+    private Hang hang;
 }
