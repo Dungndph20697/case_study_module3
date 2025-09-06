@@ -1,8 +1,10 @@
 package com.example.case_study.model;
 
-import lombok.*;
+import lombok.Builder;
 
-
+import lombok.ToString;
+@Builder
+@ToString
 public class SanPham {
     private int id;
     private String tenSanPham;
@@ -30,4 +32,5 @@ public class SanPham {
     public void setTenSanPham(String tenSanPham) {
         this.tenSanPham = tenSanPham;
     }
+
 }

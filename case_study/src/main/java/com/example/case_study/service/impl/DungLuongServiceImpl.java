@@ -38,9 +38,4 @@ public class DungLuongServiceImpl implements ICRUService<DungLuong> {
     public List<DungLuong> searchByName(String keyword) {
         return dungLuongDAO.searchByName(keyword);
     }
-
-    @Override
-    public List<DungLuong> searchByName(String keyword) {
-        return dungLuongDAO.searchByName(keyword);
-    }
 }

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -30,9 +32,23 @@
                 <button class="cart-btn" title="Giỏ hàng">
                     <i class="bi bi-cart3"></i>
                 </button>
-                <button class="login-btn" title="Đăng nhập">
-                    <i class="bi bi-person"></i>
-                </button>
+
+<%--                kiem tra login logout--%>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.currentUser}">
+                        <div class="user-info">
+                            Xin chào, ${sessionScope.currentUser.firstName} ${sessionScope.currentUser.lastName}
+                            <a href="${pageContext.request.contextPath}/logout" class="btn btn-link">Đăng xuất</a>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="${pageContext.request.contextPath}/login" class="login-btn" title="Đăng nhập">
+                            <i class="bi bi-person"></i>
+                        </a>
+                    </c:otherwise>
+                </c:choose>
+
+
             </div>
             <button class="mobile-menu">
                 <i class="bi bi-list"></i>

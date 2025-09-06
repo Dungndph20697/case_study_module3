@@ -316,12 +316,13 @@
             Đăng nhập thành công!
         </div>
 
-        <form id="loginForm">
+        <form action="${pageContext.request.contextPath}/login" method="post">
             <div class="form-group">
                 <label for="email">Email</label>
                 <div class="input-wrapper">
                     <i class="bi bi-envelope input-icon"></i>
-                    <input type="email" id="email" class="form-control" placeholder="Nhập email của bạn" required>
+                    <input type="email" id="email" name="email" class="form-control"
+                           placeholder="Nhập email của bạn" required>
                 </div>
             </div>
 
@@ -329,7 +330,8 @@
                 <label for="password">Mật khẩu</label>
                 <div class="input-wrapper">
                     <i class="bi bi-lock input-icon"></i>
-                    <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu" required>
+                    <input type="password" id="password" name="password" class="form-control"
+                           placeholder="Nhập mật khẩu" required>
                     <i class="bi bi-eye toggle-password" onclick="togglePassword()"></i>
                 </div>
             </div>
@@ -348,6 +350,7 @@
             </button>
         </form>
 
+
         <div class="divider">
             <span>Hoặc đăng nhập với</span>
         </div>
@@ -360,7 +363,7 @@
         </div>
 
         <div class="signup-link">
-            Chưa có tài khoản? <a href="#" onclick="showSignup()">Đăng ký ngay</a>
+            Chưa có tài khoản? <a href="${pageContext.request.contextPath}/login/dangky.jsp">Đăng ký ngay</a>
         </div>
     </div>
 </div>
