@@ -72,27 +72,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row mb-4">
-                                <div class="col-md-6">
-                                    <div class="search-box">
-                                        <i class="fas fa-search"></i>
-                                        <input type="text" class="form-control" placeholder="Tìm kiếm dung lượng...">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <select class="form-select">
-                                        <option>Tất cả đơn vị</option>
-                                        <option>GB</option>
-                                        <option>TB</option>
-                                        <option>MB</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <select class="form-select">
-                                        <option>Tất cả trạng thái</option>
-                                        <option>Hoạt động</option>
-                                        <option>Ngừng hoạt động</option>
-                                    </select>
-                                </div>
+                                <form action="${pageContext.request.contextPath}/admin/dung-luong" method="get"
+                                      class="d-flex">
+                                    <input type="hidden" name="action" value="search"/>
+                                    <input type="text" name="keyword" class="form-control me-2"
+                                           placeholder="Tìm kiếm dung lượng..." value="${param.keyword}"/>
+                                    <%--                              <button type="submit" class="btn btn-primary">--%>
+                                    <%--                                  <i class="fas fa-search"></i>--%>
+                                    <%--                              </button>--%>
+                                </form>
                             </div>
 
                             <div class="table-responsive">
@@ -105,19 +93,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="dungLuongs" items="${dungLuongs}" varStatus="status">
+                                    <c:forEach var="dungLuong" items="${dungLuongs}" varStatus="status">
                                         <tr>
-                                            <td><span class="badge bg-primary">${dungLuongs.id}</span></td>
-                                            <td class="fw-bold">${dungLuongs.tenDungLuong}</td>
+                                            <td><span class="badge bg-primary">${dungLuong.id}</span></td>
+                                            <td class="fw-bold">${dungLuong.tenDungLuong}</td>
                                             <td class="action-buttons">
-                                                <a href="/admin/dung-luong?action=edit&id=${dungLuongs.id}"
+                                                <a href="/admin/dung-luong?action=edit&id=${dungLuong.id}"
                                                    class="btn btn-sm btn-outline-primary" title="Sửa">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
 
-                                                <button class="btn btn-sm btn-outline-danger" title="Xóa">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
+<%--                                                <a href="/admin/dung-luong?action=delete&id=${dungLuong.id}"--%>
+<%--                                                   class="btn btn-sm btn-outline-danger" title="Xóa"--%>
+<%--                                                   onclick="return confirm('Bạn có chắc muốn xóa không?')">--%>
+<%--                                                    <i class="fas fa-trash"></i>--%>
+<%--                                                </a>--%>
                                             </td>
                                         </tr>
                                     </c:forEach>

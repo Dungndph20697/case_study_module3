@@ -15,10 +15,10 @@ import java.util.List;
 
 public class ChucVuDAOImpl implements IChucVu<ChucVu> {
 
-    public static final String SQL_DELETE = "delete from customers where id = ?";
-    public static final String SQL_UPDATE = "update chuc_vu set name = ?, phone = ?, email = ? where id = ?";
-    public static final String SQL_SELECT_BY_ID = "SELECT * FROM chuc_vu where id = ?";
-    public static final String SQL_INSERT = "insert into chuc_vu (name, muc_luong, trang_thai) values (?, ?, ?)";
+    public static final String SQL_DELETE = "delete from chuc_vu where id = ?";
+    public static final String SQL_UPDATE = "update chuc_vu set ten_chuc_vu = ? where id = ?";
+    public static final String SQL_SELECT_BY_ID = "SELECT * FROM chuc_vu where id = ?;";
+    public static final String SQL_INSERT = "insert into chuc_vu (ten_chuc_vu) values (?)";
     public static final String SQL_SELECT_ALL = "SELECT * FROM chuc_vu ORDER BY id desc";
 
     @Override
@@ -30,10 +30,8 @@ public class ChucVuDAOImpl implements IChucVu<ChucVu> {
             ResultSet rs = stmt.executeQuery(SQL_SELECT_ALL);
             while(rs.next()){
                 int id = rs.getInt("id");
-                String tenChuVu = rs.getString("ten_chuc_vu");
-                String mucLuong = rs.getString("muc_luong");
-                String trangThai = rs.getString("trang_thai");
-                chucVus.add(new ChucVu(id, tenChuVu, mucLuong, trangThai));
+                String tenChuVu = rs.getString("ten_chuc_vu");;
+                chucVus.add(new ChucVu(id, tenChuVu));
             }
         }catch (SQLException e){
             throw  new RuntimeException(e);
@@ -51,13 +49,15 @@ public class ChucVuDAOImpl implements IChucVu<ChucVu> {
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()){
                 chucVu = new ChucVu();
-                chucVu.setTenChuVu(rs.getString("ten_chuc_vu"));
-                chucVu.setMucLuong(rs.getString("muc_luong"));
-                chucVu.setTrangThai(rs.getString("trang_thai"));
+                String tenChuVu = rs.getString("ten_chuc_vu");
+                int idResult = rs.getInt("id");
+                chucVu.setTenChuVu(tenChuVu);
+                chucVu.setId(idResult);
             }
         }catch (SQLException e){
             throw  new RuntimeException(e);
         }
+        System.out.println(chucVu);
         return chucVu;
     }
 
@@ -67,8 +67,6 @@ public class ChucVuDAOImpl implements IChucVu<ChucVu> {
         try(Connection conn = new DBConnection().getConnection();
             PreparedStatement pstmt = conn.prepareStatement(SQL_INSERT);){
             pstmt.setString(1, chucvu.getTenChuVu());
-            pstmt.setString(2, chucvu.getMucLuong());
-            pstmt.setString(3, chucvu.getTrangThai());
             rowAffected = pstmt.executeUpdate();
         }catch (SQLException e){
             throw  new RuntimeException(e);
@@ -82,9 +80,7 @@ public class ChucVuDAOImpl implements IChucVu<ChucVu> {
         try(Connection conn = new DBConnection().getConnection();
             PreparedStatement pstmt = conn.prepareStatement(SQL_UPDATE);){
             pstmt.setString(1, chucVu.getTenChuVu());
-            pstmt.setString(2, chucVu.getMucLuong());
-            pstmt.setString(3, chucVu.getTrangThai());
-            pstmt.setInt(4, chucVu.getId());
+            pstmt.setInt(2, chucVu.getId());
             rowAffected = pstmt.executeUpdate();
         }catch (SQLException e){
             throw  new RuntimeException(e);
@@ -98,7 +94,7 @@ public class ChucVuDAOImpl implements IChucVu<ChucVu> {
         if(chucVu == null){
             return false;
         }else {
-            Connection conn = new DBConnection().getConnection();
+            Connection conn = DBConnection.getConnection();
             int rowAffected = 0;
             try{
                 PreparedStatement pstmt = conn.prepareStatement(SQL_DELETE);

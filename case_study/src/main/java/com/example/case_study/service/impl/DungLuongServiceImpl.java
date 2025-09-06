@@ -33,4 +33,9 @@ public class DungLuongServiceImpl implements ICRUService<DungLuong> {
     public boolean update(int id, DungLuong d) {
         return dungLuongDAO.update(id, d);
     }
+
+    @Override
+    public List<DungLuong> searchByName(String keyword) {
+        return dungLuongDAO.searchByName(keyword);
+    }
 }

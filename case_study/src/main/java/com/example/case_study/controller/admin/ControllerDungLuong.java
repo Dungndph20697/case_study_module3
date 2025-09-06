@@ -2,6 +2,7 @@ package com.example.case_study.controller.admin;
 
 import com.example.case_study.model.DungLuong;
 import com.example.case_study.service.ICRUService;
+import com.example.case_study.service.IDungLuongService;
 import com.example.case_study.service.impl.DungLuongServiceImpl;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "dungLuongServlet", value = "/admin/dung-luong")
