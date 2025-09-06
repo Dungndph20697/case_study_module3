@@ -185,12 +185,13 @@
                                                 >
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <button
+                                                <a
+                                                        href="/admin/chi-tiet-san-pham?action=detail&id=${spct.id}"
                                                         class="btn btn-sm btn-outline-danger"
-                                                        title="Xóa"
+                                                        title="detail"
                                                 >
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     </c:forEach>

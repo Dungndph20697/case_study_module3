@@ -68,24 +68,16 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <form action="/admin/chi-tiet-san-pham?action=add" method="post" >
+                            <form action="/admin/chi-tiet-san-pham?action=add" method="post">
                                 <!-- Thông tin cơ bản -->
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <label for="productName" class="form-label">Sản Phẩm <span
                                                 class="required">*</span></label>
-                                        <select class="form-select" id="productName" required>
-                                            <option value="">Chọn sản phẩm</option>
-                                            <option value="iphone-15-pro">iPhone 15 Pro</option>
-                                            <option value="iphone-15">iPhone 15</option>
-                                            <option value="samsung-s24-ultra">Samsung Galaxy S24 Ultra</option>
-                                            <option value="samsung-s24">Samsung Galaxy S24</option>
-                                            <option value="xiaomi-14-ultra">Xiaomi 14 Ultra</option>
-                                            <option value="xiaomi-14">Xiaomi 14</option>
-                                            <option value="oppo-find-x7">OPPO Find X7</option>
-                                            <option value="vivo-x100-pro">Vivo X100 Pro</option>
-                                            <option value="oneplus-12">OnePlus 12</option>
-                                            <option value="huawei-p60-pro">Huawei P60 Pro</option>
+                                        <select class="form-select" id="idSanPham" name="idSanPham" required>
+                                            <c:forEach var="sp" items="${sanPhams}" varStatus="status">
+                                                <option value="${sp.id}">${sp.tenSanPham}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
@@ -113,7 +105,8 @@
                                         <label for="price" class="form-label">Giá Bán (VNĐ) <span
                                                 class="required">*</span></label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" name="gia" id="price" placeholder="0" min="0"
+                                            <input type="number" class="form-control" name="gia" id="price"
+                                                   placeholder="0" min="0"
                                                    required>
                                             <span class="input-group-text">₫</span>
                                         </div>
@@ -121,11 +114,11 @@
                                     <div class="col-md-6">
                                         <label for="quantity" class="form-label">Số Lượng <span
                                                 class="required">*</span></label>
-                                        <input type="number" name="soLuong" class="form-control" id="quantity" placeholder="0" min="0"
+                                        <input type="number" name="soLuong" class="form-control" id="quantity"
+                                               placeholder="0" min="0"
                                                required>
                                     </div>
                                 </div>
-
 
 
                                 <div class="section-divider"></div>
@@ -161,7 +154,7 @@
 
                                 <div class="mb-4">
                                     <div class="image-upload-area">
-                                        <input type="file" class="form-control" id="productImage"  name="anh"
+                                        <input type="file" class="form-control" id="productImage" name="anh"
                                                multiple>
                                     </div>
                                 </div>

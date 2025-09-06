@@ -3,6 +3,7 @@ package com.example.case_study.model;
 import lombok.*;
 
 
+@Builder
 public class SanPham {
     private int id;
     private String tenSanPham;
