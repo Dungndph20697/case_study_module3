@@ -80,7 +80,7 @@
                         </h2>
                         <a href="${pageContext.request.contextPath}/admin/san-pham?action=create"
                            class="btn btn-primary btn-custom">
-                            <i class="fas fa-plus"></i>Thêm sản phẩm
+                            <i class="fas fa-plus"></i>Thêm sản
                         </a>
                     </div>
 
