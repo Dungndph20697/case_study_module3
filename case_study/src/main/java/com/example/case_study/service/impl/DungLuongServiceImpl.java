@@ -4,10 +4,11 @@ import com.example.case_study.dao.IDungLuong;
 import com.example.case_study.dao.impl.DungLuongDAOImpl;
 import com.example.case_study.model.DungLuong;
 import com.example.case_study.service.ICRUService;
+import com.example.case_study.service.IDungLuongServiceSerchByName;
 
 import java.util.List;
 
-public class DungLuongServiceImpl implements ICRUService<DungLuong> {
+public class DungLuongServiceImpl implements ICRUService<DungLuong>, IDungLuongServiceSerchByName {
     private IDungLuong dungLuongDAO;
 
     public DungLuongServiceImpl() {
@@ -39,8 +40,4 @@ public class DungLuongServiceImpl implements ICRUService<DungLuong> {
         return dungLuongDAO.searchByName(keyword);
     }
 
-    @Override
-    public List<DungLuong> searchByName(String keyword) {
-        return dungLuongDAO.searchByName(keyword);
-    }
 }
