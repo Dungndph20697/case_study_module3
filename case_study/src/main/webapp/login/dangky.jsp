@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: chung
@@ -216,39 +217,50 @@
                     <p class="text-muted">Điền thông tin để tạo tài khoản mới</p>
                 </div>
 
-                <form id="registerServlet" action="${pageContext.request.contextPath}/dang-ky" method="post">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Họ" required>
-                                <label for="firstName">Họ *</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Tên" required>
-                                <label for="lastName">Tên *</label>
-                            </div>
-                        </div>
+                <c:if test="${not empty error}">
+                    <div class="alert alert-danger">${error}</div>
+                </c:if>
+
+                <form id="registerForm" action="${pageContext.request.contextPath}/dang-ky" method="post">
+                    <!-- Họ và Tên -->
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="fullName" name="fullName"
+                               placeholder="Họ và Tên" value="${fullName}" required>
+                        <label for="fullName">Họ và Tên *</label>
                     </div>
-                    <!-- email -->
-                    <div class="form-floating">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+
+                    <!-- Email -->
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email"
+                               placeholder="Email" value="${email}" required>
                         <label for="email">Email *</label>
                     </div>
-                    <!-- phone -->
-                    <div class="form-floating">
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" required>
+
+                    <!-- Địa chỉ -->
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="address" name="address"
+                               placeholder="Địa chỉ" value="${address}" required>
+                        <label for="address">Địa chỉ *</label>
+                    </div>
+
+                    <!-- Số điện thoại -->
+                    <div class="form-floating mb-3">
+                        <input type="tel" class="form-control" id="phone" name="phone"
+                               placeholder="Số điện thoại" value="${phone}" required>
                         <label for="phone">Số điện thoại *</label>
                     </div>
-                    <!-- password -->
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu" required>
+
+                    <!-- Mật khẩu -->
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Mật khẩu" required>
                         <label for="password">Mật khẩu *</label>
                     </div>
-                    <!-- confirm password -->
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Xác nhận mật khẩu" required>
+
+                    <!-- Xác nhận mật khẩu -->
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="confirmPassword"
+                               placeholder="Xác nhận mật khẩu" required>
                         <label for="confirmPassword">Xác nhận mật khẩu *</label>
                     </div>
 
@@ -256,6 +268,7 @@
                         <i class="bi bi-person-plus me-2"></i>Đăng Ký Tài Khoản
                     </button>
                 </form>
+
             </div>
         </div>
     </div>
@@ -294,47 +307,25 @@
 
     // Form validation
     document.getElementById('registerForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
-        const terms = document.getElementById('terms').checked;
 
-        // Check if passwords match
         if (password !== confirmPassword) {
+            e.preventDefault();
             alert('Mật khẩu xác nhận không khớp!');
             return;
         }
 
-        // Check if terms are accepted
-        if (!terms) {
-            alert('Vui lòng đồng ý với điều khoản sử dụng!');
-            return;
-        }
-
-        // Check password strength
         if (password.length < 8) {
+            e.preventDefault();
             alert('Mật khẩu phải có ít nhất 8 ký tự!');
             return;
         }
 
-        // Simulate registration process
-        const submitBtn = document.querySelector('.btn-register');
-        const originalText = submitBtn.innerHTML;
-
-        submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Đang xử lý...';
-        submitBtn.disabled = true;
-
-        setTimeout(() => {
-            alert('Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.');
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-
-            // Reset form
-            this.reset();
-            document.getElementById('passwordStrength').style.width = '0%';
-        }, 2000);
+        // ✅ KHÔNG preventDefault nữa → cho submit bình thường
     });
+
+
 
     // Phone number formatting
     document.getElementById('phone').addEventListener('input', function() {

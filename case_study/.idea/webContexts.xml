@@ -6,6 +6,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/quanlychucvu.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/quanlyhang.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/giohang/giohanguser.jsp" value="file://$PROJECT_DIR$/src/main/webapp/giohang" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/nguoidung/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/nguoidung" />
       </map>
     </option>
   </component>
