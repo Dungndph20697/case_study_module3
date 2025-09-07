@@ -1,14 +1,13 @@
-package com.example.case_study.controller.giohang;
+package com.example.case_study.controller.nguoidung;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "gioHangServlet", value = "/giohang/gio-hang-user")
+@WebServlet(name = "gioHangServlet", value = "/giohang")
 public class ControllerGioHang extends HttpServlet {
 
     @Override

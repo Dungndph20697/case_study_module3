@@ -13,7 +13,7 @@
 </head>
 <body>
 <%--header--%>
-<%@ include file="header.jsp" %>
+<%@ include file="/nguoidung/header.jsp" %>
 <!-- Main Content -->
 <div class="container">
     <div class="row">
