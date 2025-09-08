@@ -25,7 +25,7 @@ public class ControllerDungLuong extends HttpServlet {
     @Override
     public void init() throws ServletException {
         dungLuongService = new DungLuongServiceImpl();
-        serchByNameService = new DungLuongServiceImpl();
+//        serchByNameService = new DungLuongServiceImpl();
     }
 
     @Override

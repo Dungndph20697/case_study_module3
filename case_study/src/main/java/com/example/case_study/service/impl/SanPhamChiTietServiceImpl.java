@@ -2,9 +2,11 @@ package com.example.case_study.service.impl;
 
 import com.example.case_study.dao.ICRUDAO;
 import com.example.case_study.dao.impl.SanPhamChiTietDAOImpl;
+import com.example.case_study.model.DungLuong;
 import com.example.case_study.model.SanPhamChiTiet;
 import com.example.case_study.service.ICRUService;
 
+import java.util.Collections;
 import java.util.List;
 
 public class SanPhamChiTietServiceImpl implements ICRUService<SanPhamChiTiet> {
@@ -33,4 +35,10 @@ public class SanPhamChiTietServiceImpl implements ICRUService<SanPhamChiTiet> {
     public boolean update(int id, SanPhamChiTiet d) {
         return sanPhamChiTietDAO.update(id, d);
     }
+
+    @Override
+    public List<DungLuong> searchByName(String keyword) {
+        return Collections.emptyList();
+    }
+
 }

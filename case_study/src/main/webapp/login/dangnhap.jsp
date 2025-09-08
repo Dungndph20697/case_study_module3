@@ -316,12 +316,14 @@
             Đăng nhập thành công!
         </div>
 
-        <form id="loginForm">
+        <form id="loginForm" action="${pageContext.request.contextPath}/login" method="post">
             <div class="form-group">
                 <label for="email">Email</label>
                 <div class="input-wrapper">
                     <i class="bi bi-envelope input-icon"></i>
-                    <input type="email" id="email" class="form-control" placeholder="Nhập email của bạn" required>
+                    <input type="email" id="email" name="email" class="form-control"
+                           placeholder="Nhập email của bạn"
+                           value="${emailCookie != null ? emailCookie : ''}" required>
                 </div>
             </div>
 
@@ -329,14 +331,16 @@
                 <label for="password">Mật khẩu</label>
                 <div class="input-wrapper">
                     <i class="bi bi-lock input-icon"></i>
-                    <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu" required>
+                    <input type="password" id="password" name="password" class="form-control"
+                           placeholder="Nhập mật khẩu"
+                           value="${passwordCookie != null ? passwordCookie : ''}" required>
                     <i class="bi bi-eye toggle-password" onclick="togglePassword()"></i>
                 </div>
             </div>
 
             <div class="form-options">
                 <label class="remember-me">
-                    <input type="checkbox" id="remember">
+                    <input type="checkbox" id="remember" name="remember">
                     <span>Ghi nhớ đăng nhập</span>
                 </label>
                 <a href="#" class="forgot-password">Quên mật khẩu?</a>
@@ -347,6 +351,15 @@
                 Đăng Nhập
             </button>
         </form>
+
+        <!-- Hiển thị thông báo lỗi từ LoginServlet -->
+        <c:if test="${not empty errorMessage}">
+            <div class="error-message" style="display: block;">
+                <i class="bi bi-exclamation-triangle"></i>
+                    ${errorMessage}
+            </div>
+        </c:if>
+
 
         <div class="divider">
             <span>Hoặc đăng nhập với</span>
@@ -360,43 +373,43 @@
         </div>
 
         <div class="signup-link">
-            Chưa có tài khoản? <a href="#" onclick="showSignup()">Đăng ký ngay</a>
+            Chưa có tài khoản? <a href="${pageContext.request.contextPath}/login/dangky.jsp">Đăng ký ngay</a>
         </div>
     </div>
 </div>
 
 <script>
     // Form validation and submission
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const errorMessage = document.getElementById('errorMessage');
-        const successMessage = document.getElementById('successMessage');
-
-        // Hide previous messages
-        errorMessage.style.display = 'none';
-        successMessage.style.display = 'none';
-
-        // Simple validation
-        if (!email || !password) {
-            errorMessage.textContent = 'Vui lòng điền đầy đủ thông tin!';
-            errorMessage.style.display = 'block';
-            return;
-        }
-
-        // Demo login (in real app, this would be an API call)
-        if (email === 'demo@mobilestore.vn' && password === '123456') {
-            successMessage.style.display = 'block';
-            setTimeout(() => {
-                alert('Đăng nhập thành công! Chuyển hướng về trang chủ...');
-                // window.location.href = 'index.html';
-            }, 1500);
-        } else {
-            errorMessage.style.display = 'block';
-        }
-    });
+    // document.getElementById('loginForm').addEventListener('submit', function(e) {
+    //     e.preventDefault();
+    //
+    //     const email = document.getElementById('email').value;
+    //     const password = document.getElementById('password').value;
+    //     const errorMessage = document.getElementById('errorMessage');
+    //     const successMessage = document.getElementById('successMessage');
+    //
+    //     // Hide previous messages
+    //     errorMessage.style.display = 'none';
+    //     successMessage.style.display = 'none';
+    //
+    //     // Simple validation
+    //     if (!email || !password) {
+    //         errorMessage.textContent = 'Vui lòng điền đầy đủ thông tin!';
+    //         errorMessage.style.display = 'block';
+    //         return;
+    //     }
+    //
+    //     // Demo login (in real app, this would be an API call)
+    //     if (email === 'demo@mobilestore.vn' && password === '123456') {
+    //         successMessage.style.display = 'block';
+    //         setTimeout(() => {
+    //             alert('Đăng nhập thành công! Chuyển hướng về trang chủ...');
+    //             // window.location.href = 'index.html';
+    //         }, 1500);
+    //     } else {
+    //         errorMessage.style.display = 'block';
+    //     }
+    // });
 
     // Toggle password visibility
     function togglePassword() {
