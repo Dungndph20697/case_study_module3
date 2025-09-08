@@ -1,5 +1,8 @@
 package com.example.case_study.model.nguoidung;
 
+import lombok.Builder;
+
+@Builder
 public class ProductUser {
     private int id;
     private String name;
@@ -9,6 +12,10 @@ public class ProductUser {
     private String image;
     private double rating;
     public ProductUser() {
+    }
+
+    public ProductUser(int id) {
+        this.id = id;
     }
 
     public ProductUser(int id, String name, String specs, double price, double oldPrice, String image, double rating) {

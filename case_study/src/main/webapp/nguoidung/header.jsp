@@ -13,14 +13,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
+
 <header class="shadow-sm mb-3">
+
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <a class="navbar-brand fw-bold" href="/trang-chu">
                 <i class="bi bi-phone"></i> MobileStore
             </a>
 
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <ul class="nav-links">
+                <li><a href="/trang-chu" title="Trang chủ"><i class="bi bi-house"></i></a></li>
+                <li><a href="/trang-chu" title="Sản phẩm"><i class="bi bi-grid"></i></a></li>
+                <li><a href="/trang-chu" title="Giới thiệu"><i class="bi bi-info-circle"></i></a></li>
+                <li><a href="/trang-chu" title="Liên hệ"><i class="bi bi-telephone"></i></a></li>
+            </ul>
+
+            <div class="search-cart">
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button><i class="bi bi-search"></i></button>
+                </div>
+                <a href="/giohang" class="cart-btn" title="Giỏ hàng">
+                    <i class="bi bi-cart3"></i>
+                </a>
+                <button class="login-btn" title="Đăng nhập">
+                    <i class="bi bi-person"></i>
+                </button>
+            </div>
+            <button class="mobile-menu">
+
                 <i class="bi bi-list"></i>
             </button>
 
