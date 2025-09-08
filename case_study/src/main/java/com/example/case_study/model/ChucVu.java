@@ -19,7 +19,9 @@ public class ChucVu {
     public ChucVu(String tenChuVu) {
         this.tenChuVu = tenChuVu;
     }
-
+    public ChucVu(int id){
+        this.id = id;
+    }
 
     public int getId() {
         return id;
