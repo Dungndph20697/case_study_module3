@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-<header class="header">
+<header class="header mb-3">
     <div class="container">
         <nav class="nav">
             <div class="logo">
@@ -27,9 +27,9 @@
                     <input type="text" placeholder="Tìm kiếm...">
                     <button><i class="bi bi-search"></i></button>
                 </div>
-                <button class="cart-btn" title="Giỏ hàng">
+                <a href="/giohang" class="cart-btn" title="Giỏ hàng">
                     <i class="bi bi-cart3"></i>
-                </button>
+                </a>
                 <button class="login-btn" title="Đăng nhập">
                     <i class="bi bi-person"></i>
                 </button>

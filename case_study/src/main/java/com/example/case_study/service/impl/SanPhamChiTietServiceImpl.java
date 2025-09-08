@@ -1,15 +1,14 @@
 package com.example.case_study.service.impl;
 
-import com.example.case_study.dao.ISanPhamChiTiet;
+import com.example.case_study.dao.ICRUDAO;
 import com.example.case_study.dao.impl.SanPhamChiTietDAOImpl;
 import com.example.case_study.model.SanPhamChiTiet;
-import com.example.case_study.service.ISanPhamChiTietService;
+import com.example.case_study.service.ICRUService;
 
-import java.util.Collections;
 import java.util.List;
 
-public class SanPhamChiTietServiceImpl implements ISanPhamChiTietService<SanPhamChiTiet> {
-    private ISanPhamChiTiet sanPhamChiTietDAO;
+public class SanPhamChiTietServiceImpl implements ICRUService<SanPhamChiTiet> {
+    private ICRUDAO sanPhamChiTietDAO;
 
     public SanPhamChiTietServiceImpl() {
         this.sanPhamChiTietDAO = new SanPhamChiTietDAOImpl();
@@ -22,16 +21,16 @@ public class SanPhamChiTietServiceImpl implements ISanPhamChiTietService<SanPham
 
     @Override
     public SanPhamChiTiet findById(int id) {
-        return null;
+        return (SanPhamChiTiet) sanPhamChiTietDAO.findById(id);
     }
 
     @Override
     public boolean save(SanPhamChiTiet d) {
-        return false;
+        return sanPhamChiTietDAO.save(d);
     }
 
     @Override
     public boolean update(int id, SanPhamChiTiet d) {
-        return false;
+        return sanPhamChiTietDAO.update(id, d);
     }
 }

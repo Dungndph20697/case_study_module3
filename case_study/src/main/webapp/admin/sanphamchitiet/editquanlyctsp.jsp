@@ -66,39 +66,29 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="/admin/chi-tiet-san-pham?action=edit" method="post"
+                                  >
                                 <!-- Thông tin cơ bản -->
                                 <div class="row mb-4">
+                                    <input type="hidden" name="idCtspUpdate" value="<c:out value='${spct.id}' />"/>
                                     <div class="col-md-6">
                                         <label for="productName" class="form-label">Sản Phẩm <span
                                                 class="required">*</span></label>
-                                        <select class="form-select" id="productName" required>
-                                            <option value="">Chọn sản phẩm</option>
-                                            <option value="iphone-15-pro">iPhone 15 Pro</option>
-                                            <option value="iphone-15">iPhone 15</option>
-                                            <option value="samsung-s24-ultra">Samsung Galaxy S24 Ultra</option>
-                                            <option value="samsung-s24">Samsung Galaxy S24</option>
-                                            <option value="xiaomi-14-ultra">Xiaomi 14 Ultra</option>
-                                            <option value="xiaomi-14">Xiaomi 14</option>
-                                            <option value="oppo-find-x7">OPPO Find X7</option>
-                                            <option value="vivo-x100-pro">Vivo X100 Pro</option>
-                                            <option value="oneplus-12">OnePlus 12</option>
-                                            <option value="huawei-p60-pro">Huawei P60 Pro</option>
+                                        <select class="form-select" id="productName" name="idSanPham" required>
+                                            <c:forEach var="sp" items="${sanPhams}" varStatus="status">
+                                                <option ${sp.id==spct.sanPham.id?'selected':''}
+                                                        value="${sp.id}">${sp.tenSanPham}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="brand" class="form-label">Hãng <span
                                                 class="required">*</span></label>
-                                        <select class="form-select" id="brand" required>
-                                            <option value="">Chọn hãng sản xuất</option>
-                                            <option value="apple">Apple</option>
-                                            <option value="samsung">Samsung</option>
-                                            <option value="xiaomi">Xiaomi</option>
-                                            <option value="oppo">OPPO</option>
-                                            <option value="vivo">Vivo</option>
-                                            <option value="huawei">Huawei</option>
-                                            <option value="realme">Realme</option>
-                                            <option value="oneplus">OnePlus</option>
+                                        <select class="form-select" id="brand" name="idHang" required>
+                                            <c:forEach var="hang" items="${hangs}" varStatus="status">
+                                                <option ${hang.id==spct.hang.id?'selected':''}
+                                                        value="${hang.id}">${hang.tenHang}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -107,8 +97,9 @@
                                 <div class="mb-4">
                                     <label for="description" class="form-label">Mô Tả Sản Phẩm <span
                                             class="required">*</span></label>
-                                    <textarea class="form-control" id="description" rows="4"
-                                              placeholder="Nhập mô tả chi tiết về sản phẩm..." required></textarea>
+                                    <textarea class="form-control" id="description" rows="4" name="moTa"
+                                              placeholder="Nhập mô tả chi tiết về sản phẩm..."
+                                              required>${spct.moTa}</textarea>
                                 </div>
 
                                 <!-- Giá và số lượng -->
@@ -117,7 +108,8 @@
                                         <label for="price" class="form-label">Giá Bán (VNĐ) <span
                                                 class="required">*</span></label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="price" placeholder="0" min="0"
+                                            <input type="number" name="gia" value="${spct.gia}" class="form-control"
+                                                   id="price" placeholder="0" min="0"
                                                    required>
                                             <span class="input-group-text">₫</span>
                                         </div>
@@ -125,7 +117,8 @@
                                     <div class="col-md-6">
                                         <label for="quantity" class="form-label">Số Lượng <span
                                                 class="required">*</span></label>
-                                        <input type="number" class="form-control" id="quantity" placeholder="0" min="0"
+                                        <input type="number" name="soLuong" value="${spct.soLuong}" class="form-control"
+                                               id="quantity" placeholder="0" min="0"
                                                required>
                                     </div>
                                 </div>
@@ -135,9 +128,9 @@
                                     <label for="status" class="form-label">Trạng Thái
                                         <span
                                                 class="required">*</span></label>
-                                    <select class="form-select" id="status" required>
-                                        <option value="0">Còn hàng</option>
-                                        <option value="1">Hết hàng</option>
+                                    <select class="form-select" id="status" name="trangThai" required>
+                                        <option ${0==spct.trangThai?'selected':''} value="0">Còn hàng</option>
+                                        <option ${1==spct.trangThai?'selected':''} value="1">Hết hàng</option>
                                     </select>
                                 </div>
 
@@ -149,19 +142,19 @@
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <label for="capacity" class="form-label">Dung Lượng</label>
-                                        <select class="form-select" id="capacity">
+                                        <select class="form-select" id="capacity" name="idDungLuong">
                                             <c:forEach var="dungLuong" items="${dungLuongs}" varStatus="status">
-                                                <option value="${dungLuong.id}">${dungLuong.tenDungLuong}</option>
-
+                                                <option ${dungLuong.id==spct.dungLuong.id?'selected':''}
+                                                        value="${dungLuong.id}">${dungLuong.tenDungLuong}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="color" class="form-label">Màu Sắc</label>
-                                        <select class="form-select" id="color">
+                                        <select class="form-select" id="color" name="idMauSac">
                                             <c:forEach var="ms" items="${mauSacs}" varStatus="status">
-                                                <option value="${ms.id}">${ms.mauSac}</option>
-
+                                                <option ${ms.id==spct.mauSac.id?'selected':''}
+                                                        value="${ms.id}">${ms.mauSac}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -174,7 +167,7 @@
 
                                 <div class="mb-4">
                                     <div class="image-upload-area">
-                                        <input type="file" class="form-control" id="productImage" accept="image/*"
+                                        <input type="file" class="form-control" id="productImage" name="anh"
                                                multiple>
                                     </div>
                                 </div>
@@ -185,7 +178,7 @@
                                         <i class="bi bi-x-circle"></i> Hủy
                                     </button>
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="bi bi-check-circle"></i> Thêm Sản Phẩm
+                                        <i class="bi bi-check-circle"></i> Sửa Sản Phẩm
                                     </button>
                                 </div>
                             </form>
