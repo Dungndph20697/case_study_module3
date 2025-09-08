@@ -30,46 +30,49 @@
 
         <div class="product-grid">
             <!-- iPhone 15 Pro -->
+
             <c:forEach var="spct" items="${sanPhamChiTiets}" varStatus="status">
-                <div class="product-card">
-                    <div class="product-image mb-3">
-                        <div class="ratio ratio-1x1 border rounded shadow-sm overflow-hidden bg-light w-75 mx-auto"
-                             style="max-width: 180px;">
-                            <img src="/images/${spct.anh}"
-                                 alt="iPhone 15 Pro"
-                                 class="img-fluid object-fit-cover w-100 h-100"
-                                 onerror="this.src=''; this.style.display='none';">
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">iPhone 15 Pro</h3>
-                        <p class="product-specs">${spct.dungLuong.tenDungLuong} - ${spct.mauSac.mauSac}</p>
-                        <div class="rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                <form action="/trang-chu?idSpct=${spct.id}" method="post">
+                    <div class="product-card">
+                        <div class="product-image mb-3">
+                            <div class="ratio ratio-1x1 border rounded shadow-sm overflow-hidden bg-light w-75 mx-auto"
+                                 style="max-width: 180px;">
+                                <img src="/images/${spct.anh}"
+                                     alt="iPhone 15 Pro"
+                                     class="img-fluid object-fit-cover w-100 h-100"
+                                     onerror="this.src=''; this.style.display='none';">
                             </div>
-                            <span class="rating-text">(4.9) 128 đánh giá</span>
                         </div>
-                        <div class="price">
+                        <div class="product-info">
+                            <h3 class="product-name">${spct.sanPham.tenSanPham}</h3>
+                            <p class="product-specs">${spct.dungLuong.tenDungLuong} - ${spct.mauSac.mauSac}</p>
+                            <div class="rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">(4.9) 128 đánh giá</span>
+                            </div>
+                            <div class="price">
                             <span class="current-price"><span class="current-price">
     <fmt:formatNumber value="${spct.gia}" type="number" groupingUsed="true" maxFractionDigits="0"/> ₫
 </span></span>
 
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn btn-primary">
-                                <i class="bi bi-cart-plus"></i> Thêm Giỏ
-                            </button>
-                            <button class="btn btn-outline">
-                                <i class="bi bi-eye"></i> Xem
-                            </button>
+                            </div>
+                            <div class="product-actions">
+                                <button type="submit" class="btn btn-primary" >
+                                    <i class="bi bi-cart-plus"></i> Thêm Giỏ
+                                </button>
+                                <button class="btn btn-outline">
+                                    <i class="bi bi-eye"></i> Xem
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </c:forEach>
         </div>
     </div>

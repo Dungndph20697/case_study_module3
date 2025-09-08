@@ -1,7 +1,9 @@
 package com.example.case_study.model;
 
+import lombok.Builder;
 import lombok.ToString;
 
+@Builder
 @ToString
 public class MauSac {
     private int id;
