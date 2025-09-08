@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -57,8 +58,9 @@
                             <i class="fas fa-users me-2 text-primary"></i>
                             Quản Lý Người Dùng
                         </h2>
-                        <button class="btn btn-primary btn-custom">
+                        <a class="btn btn-primary btn-custom" href="/admin/nguoi-dung?action=create">
                             <i class="fas fa-plus me-2"></i>Thêm Người Dùng
+                        </a>
                         </button>
                     </div>
 
@@ -93,63 +95,39 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Họ Tên</th>
+                                        <th>Họ Và Tên</th>
                                         <th>Email</th>
                                         <th>Số Điện Thoại</th>
+                                        <th>Địa Chỉ</th>
+                                        <th>Mật Khẩu</th>
                                         <th>Chức Vụ</th>
-                                        <th>Trạng Thái</th>
                                         <th>Thao Tác</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><span class="badge bg-primary">#001</span></td>
-                                        <td class="fw-bold">Nguyễn Văn An</td>
-                                        <td>admin@company.com</td>
-                                        <td>0901234567</td>
-                                        <td><span class="badge bg-info badge-custom">Giám Đốc</span></td>
-                                        <td><span class="badge bg-success badge-custom">Hoạt động</span></td>
-                                        <td class="action-buttons">
-                                            <button class="btn btn-sm btn-outline-primary" title="Sửa">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger" title="Xóa">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="badge bg-primary">#002</span></td>
-                                        <td class="fw-bold">Trần Thị Bình</td>
-                                        <td>binh.tran@company.com</td>
-                                        <td>0912345678</td>
-                                        <td><span class="badge bg-info badge-custom">Trưởng Phòng IT</span></td>
-                                        <td><span class="badge bg-success badge-custom">Hoạt động</span></td>
-                                        <td class="action-buttons">
-                                            <button class="btn btn-sm btn-outline-primary" title="Sửa">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger" title="Xóa">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="badge bg-primary">#003</span></td>
-                                        <td class="fw-bold">Lê Minh Cường</td>
-                                        <td>cuong.le@company.com</td>
-                                        <td>0923456789</td>
-                                        <td><span class="badge bg-info badge-custom">Nhân Viên Bán Hàng</span></td>
-                                        <td><span class="badge bg-success badge-custom">Hoạt động</span></td>
-                                        <td class="action-buttons">
-                                            <button class="btn btn-sm btn-outline-primary" title="Sửa">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger" title="Xóa">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    <c:forEach var="nguoiDung" items="${nguoiDungs}" varStatus="status">
+                                        <tr>
+                                            <td><span class="badge bg-primary">${nguoiDung.id}</span></td>
+                                            <td><span class="badge bg-primary">${nguoiDung.tenNguoiDung}</span></td>
+                                            <td><span class="badge bg-primary">${nguoiDung.email}</span></td>
+                                            <td><span class="badge bg-primary">${nguoiDung.sdt}</span></td>
+                                            <td><span class="badge bg-primary">${nguoiDung.diaChi}</span></td>
+                                            <td><span class="badge bg-primary">${nguoiDung.matKhau}</span></td>
+                                            <td><span class="badge bg-primary">${nguoiDung.idChucVu.tenChuVu}</span></td>
+                                            <td class="action-buttons">
+                                                <a href="?action=edit&id=${nguoiDung.id}"
+                                                   class="btn btn-sm btn-outline-primary" title="Sửa">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                </button>
+                                                <a href="/admin/chuc-vu?action=delete&id=${nguoiDung.id}"
+                                                   class="btn btn-sm btn-outline-danger" title="Xóa"
+                                                   onclick="return confirm('Bạn có chắc muốn xóa người này này không?')">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -162,5 +140,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979a9e4aa2611fbc',t:'MTc1Njk1ODgyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<%--<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979a9e4aa2611fbc',t:'MTc1Njk1ODgyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>--%>
+</body>
 </html>
