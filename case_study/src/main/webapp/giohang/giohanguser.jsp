@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><!DOCTYPE html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -10,10 +11,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <%@ include file="css/style.jspf" %>
+    <style>
+        .product-image {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body>
 <%--header--%>
-<%@ include file="header.jsp" %>
+<%@ include file="/nguoidung/header.jsp" %>
 <!-- Main Content -->
 <div class="container">
     <div class="row">
@@ -28,118 +47,44 @@
                 </div>
                 <div class="section-content p-0">
                     <!-- Cart Item 1 -->
-                    <div class="cart-item p-4 border-bottom">
-                        <div class="row align-items-center">
-                            <div class="col-md-2">
-                                <div class="bg-primary rounded d-flex align-items-center justify-content-center product-image">
-                                    <i class="bi bi-phone text-white" style="font-size: 2rem;"></i>
+                    <c:forEach var="hdct" items="${hoaDonChiTietList}" varStatus="status">
+                        <div class="cart-item p-4 border-bottom">
+                            <div class="row align-items-center">
+                                <div class="col-md-2">
+                                    <div class="bg-primary rounded d-flex align-items-center justify-content-center product-image">
+                                        <img src="/images/${hdct.spct.anh}" alt="${hdct.spct.sanPham.tenSanPham}" class="img-fluid">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <h5 class="mb-1">iPhone 15 Pro Max</h5>
-                                <p class="text-muted mb-1">256GB - Titan Tự Nhiên</p>
-                                <small class="text-success">
-                                    <i class="bi bi-check-circle me-1"></i>Còn hàng
-                                </small>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="quantity-controls">
-                                    <button class="quantity-btn">
-                                        <i class="bi bi-dash"></i>
-                                    </button>
-                                    <input type="number" class="quantity-input" value="1" min="1">
-                                    <button class="quantity-btn">
-                                        <i class="bi bi-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-3 text-end">
-                                <div class="price-text">29.990.000₫</div>
-                                <div class="original-price">32.990.000₫</div>
-                            </div>
-                            <div class="col-md-1 text-end">
-                                <button class="btn btn-outline-danger btn-sm">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                                <div class="col-md-4">
+                                    <h5 class="mb-1">${hdct.spct.sanPham.tenSanPham}</h5>
+                                    <p class="text-muted mb-1">${hdct.spct.dungLuong.tenDungLuong} - ${hdct.spct.mauSac.mauSac}</p>
 
-                    <!-- Cart Item 2 -->
-                    <div class="cart-item p-4 border-bottom">
-                        <div class="row align-items-center">
-                            <div class="col-md-2">
-                                <div class="bg-success rounded d-flex align-items-center justify-content-center product-image">
-                                    <i class="bi bi-phone text-white" style="font-size: 2rem;"></i>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <h5 class="mb-1">Samsung Galaxy S24 Ultra</h5>
-                                <p class="text-muted mb-1">512GB - Titan Đen</p>
-                                <small class="text-success">
-                                    <i class="bi bi-check-circle me-1"></i>Còn hàng
-                                </small>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="quantity-controls">
-                                    <button class="quantity-btn">
-                                        <i class="bi bi-dash"></i>
-                                    </button>
-                                    <input type="number" class="quantity-input" value="1" min="1">
-                                    <button class="quantity-btn">
-                                        <i class="bi bi-plus"></i>
+                                <div class="col-md-2">
+                                    <div class="quantity-controls">
+                                        <button class="quantity-btn">
+                                            <i class="bi bi-dash"></i>
+                                        </button>
+                                        <input type="number" class="quantity-input" value="${hdct.soLuong}" min="1">
+                                        <button class="quantity-btn">
+                                            <i class="bi bi-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-end">
+<%--                                    <div class="price-text">${hdct.donGia*hdct.soLuong}₫</div>--%>
+                                    <fmt:formatNumber value="${hdct.donGia*hdct.soLuong}" type="number" groupingUsed="true" maxFractionDigits="0"/> ₫
+                                </div>
+                                <div class="col-md-1 text-end">
+                                    <button class="btn btn-outline-danger btn-sm">
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </div>
-                            </div>
-                            <div class="col-md-3 text-end">
-                                <div class="price-text">33.990.000₫</div>
-                                <div class="original-price">36.990.000₫</div>
-                            </div>
-                            <div class="col-md-1 text-end">
-                                <button class="btn btn-outline-danger btn-sm">
-                                    <i class="bi bi-trash"></i>
-                                </button>
                             </div>
                         </div>
-                    </div>
+                    </c:forEach>
 
-                    <!-- Cart Item 3 -->
-                    <div class="cart-item p-4">
-                        <div class="row align-items-center">
-                            <div class="col-md-2">
-                                <div class="bg-warning rounded d-flex align-items-center justify-content-center product-image">
-                                    <i class="bi bi-headphones text-white" style="font-size: 2rem;"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <h5 class="mb-1">AirPods Pro 2</h5>
-                                <p class="text-muted mb-1">USB-C - Trắng</p>
-                                <small class="text-success">
-                                    <i class="bi bi-check-circle me-1"></i>Còn hàng
-                                </small>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="quantity-controls">
-                                    <button class="quantity-btn">
-                                        <i class="bi bi-dash"></i>
-                                    </button>
-                                    <input type="number" class="quantity-input" value="2" min="1">
-                                    <button class="quantity-btn">
-                                        <i class="bi bi-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-3 text-end">
-                                <div class="price-text">5.990.000₫</div>
-                                <div class="original-price">6.490.000₫</div>
-                            </div>
-                            <div class="col-md-1 text-end">
-                                <button class="btn btn-outline-danger btn-sm">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <!-- Navigation Buttons -->
                     <div class="nav-buttons d-flex justify-content-between">
@@ -161,54 +106,7 @@
                     <i class="bi bi-receipt me-2"></i>Tóm Tắt Đơn Hàng
                 </h4>
 
-                <!-- Product List -->
-                <div class="mb-4">
-                    <h6 class="text-muted mb-3">Sản phẩm đã chọn:</h6>
 
-                    <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-light rounded">
-                        <div class="d-flex align-items-center">
-                            <div class="bg-primary rounded me-2" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                                <i class="bi bi-phone text-white"></i>
-                            </div>
-                            <div>
-                                <small class="fw-bold">iPhone 15 Pro Max</small>
-                                <div class="text-muted" style="font-size: 0.75rem;">256GB - Titan Tự Nhiên</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">Số lượng: x1</div>
-                            </div>
-                        </div>
-                        <small class="fw-bold text-danger">29.990.000₫</small>
-                    </div>
-
-                    <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-light rounded">
-                        <div class="d-flex align-items-center">
-                            <div class="bg-success rounded me-2" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                                <i class="bi bi-phone text-white"></i>
-                            </div>
-                            <div>
-                                <small class="fw-bold">Samsung Galaxy S24 Ultra</small>
-                                <div class="text-muted" style="font-size: 0.75rem;">512GB - Titan Đen</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">Số lượng: x1</div>
-                            </div>
-                        </div>
-                        <small class="fw-bold text-danger">33.990.000₫</small>
-                    </div>
-
-                    <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-light rounded">
-                        <div class="d-flex align-items-center">
-                            <div class="bg-warning rounded me-2" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                                <i class="bi bi-headphones text-white"></i>
-                            </div>
-                            <div>
-                                <small class="fw-bold">AirPods Pro 2</small>
-                                <div class="text-muted" style="font-size: 0.75rem;">USB-C - Trắng</div>
-                                <div class="text-muted" style="font-size: 0.75rem;">Số lượng: x2</div>
-                            </div>
-                        </div>
-                        <small class="fw-bold text-danger">11.980.000₫</small>
-                    </div>
-                </div>
-
-                <hr>
 
                 <div class="d-flex justify-content-between mb-3">
                     <span>Tạm tính (4 sản phẩm):</span>
@@ -251,6 +149,36 @@
 <%@ include file="footer.jsp" %>
 
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97aca6dad240045d',t:'MTc1NzE0NzkyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function () {
+    function c() {
+        var b = a.contentDocument || a.contentWindow.document;
+        if (b) {
+            var d = b.createElement('script');
+            d.innerHTML = "window.__CF$cv$params={r:'97aca6dad240045d',t:'MTc1NzE0NzkyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName('head')[0].appendChild(d)
+        }
+    }
+
+    if (document.body) {
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+        document.body.appendChild(a);
+        if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
+            var e = document.onreadystatechange || function () {
+            };
+            document.onreadystatechange = function (b) {
+                e(b);
+                'loading' !== document.readyState && (document.onreadystatechange = e, c())
+            }
+        }
+    }
+})();</script>
+</body>
 </html>
 
