@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-
-
-
 @WebServlet(name = "chucVuServlet", value = "/admin/chuc-vu")
 public class ControllerChucVu extends HttpServlet {
 
